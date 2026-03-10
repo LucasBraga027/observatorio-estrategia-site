@@ -1,0 +1,238 @@
+---
+layout: default
+title: Dashboards & Ferramentas
+permalink: /dashboards.html
+navbar_class: navbar-light
+---
+<style>
+    /* Styling for Dashboards Page */
+    /* Reuse core styles from Projects but add specific tweaks */
+
+    /* 1. Navbar Standardized (Orange var(--color-accent)) */
+    .navbar.navbar-light {
+        background-color: var(--color-accent);
+    }
+    .navbar .nav-links li a {
+        color: #ffffff !important;
+        opacity: 1; 
+    }
+    .navbar .nav-links li a:hover {
+        opacity: 1;
+    }
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        color: #ffffff !important;
+        background: transparent;
+    }
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: var(--color-accent) !important;
+    }
+
+    /* 2. Page Title */
+    .section-title {
+        color: var(--color-accent) !important;
+    }
+
+    /* 3. Card Styling */
+    .project-card {
+        transition: all 0.3s ease;
+        border-top: 4px solid var(--color-accent);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: var(--bg-card);
+        border-radius: 8px; /* Slight rounded corners */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Soft shadow */
+    }
+    
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-image {
+        overflow: hidden;
+        border-bottom: 1px solid #eee;
+        height: 200px; /* Fixed height for consistency */
+        background-color: var(--color-bg-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card-image img {
+        transition: transform 0.5s ease;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .project-card:hover .card-image img {
+        transform: scale(1.05);
+    }
+    
+    /* Fallback if no image */
+    .no-image-placeholder {
+        color: #ccc;
+        font-size: 3rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--text-title);
+    }
+
+    .card-description {
+        font-size: 0.95rem;
+        color: var(--text-desc);
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    /* Tool Badges */
+    .tool-badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: 0.75em;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Badge Colors */
+    .badge-r-shiny {
+        background-color: #E3F2FD; /* Light Blue */
+        color: #1565C0; /* Dark Blue */
+    }
+    
+    .badge-powerbi {
+        background-color: #FFF8E1; /* Light Yellow */
+        color: #F57F17; /* Dark Yellow/Orange */
+    }
+    
+    .badge-tableau {
+        background-color: #F3E5F5; /* Light Purple */
+        color: #7B1FA2; /* Dark Purple */
+    }
+
+    .badge-observable {
+        background-color: #FAFAFA; /* Light Gray */
+        color: #212121; /* Almost Black */
+        border: 1px solid #eee;
+    }
+
+    .badge-default {
+        background-color: #F5F5F5;
+        color: #616161;
+    }
+
+    /* Access Button */
+    .card-footer {
+        padding: 1.5rem;
+        padding-top: 0;
+        background: transparent;
+        border-top: none;
+    }
+
+    .access-btn {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        color: #fff;
+        background-color: var(--color-accent);
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        text-align: center;
+    }
+
+    .access-btn:hover {
+        background-color: #A04000; /* Darker Orange */
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* FIX: Increase BOTTOM padding to prevent footer overlap/cramped look */
+    .dashboards {
+        padding-bottom: 150px !important;
+    }
+    
+    /* Revert top padding if it was unnecessary, or keep it standard */
+    .page-header-standard {
+        padding-top: 100px; /* Standard */
+    }
+
+</style>
+
+<!-- Header -->
+<section class="page-header-standard">
+    <div class="container">
+        <h1>Dashboards & Tools</h1>
+        <p class="subtitle">Visualize dados e indicadores de saúde pública através de nossas <span class="orange-highlight">ferramentas interativas</span>.</p>
+    </div>
+</section>
+
+<!-- Dashboards List -->
+<section class="dashboards" style="padding-top: 0;">
+    <div class="container">
+        <div class="projects-grid"> <!-- Reusing grid layout from projects -->
+            {% for dash in site.data.dashboards %}
+            <div class="project-card">
+                <div class="card-image">
+                    {% if dash.image %}
+                    <img src="{{ dash.image }}" alt="{{ dash.title }}">
+                    {% else %}
+                    <div class="no-image-placeholder">📊</div>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <div>
+                        <!-- Logic for Badge Color -->
+                        {% assign tool_lower = dash.tool | downcase %}
+                        {% if tool_lower contains 'shiny' %}
+                            {% assign badge_class = 'badge-r-shiny' %}
+                        {% elsif tool_lower contains 'power' %}
+                            {% assign badge_class = 'badge-powerbi' %}
+                        {% elsif tool_lower contains 'tableau' %}
+                            {% assign badge_class = 'badge-tableau' %}
+                        {% elsif tool_lower contains 'observable' %}
+                            {% assign badge_class = 'badge-observable' %}
+                        {% else %}
+                            {% assign badge_class = 'badge-default' %}
+                        {% endif %}
+                        
+                        <span class="tool-badge {{ badge_class }}">{{ dash.tool }}</span>
+                    </div>
+                    
+                    <h3 class="card-title">{{ dash.title }}</h3>
+                    <p class="card-description">
+                        {{ dash.description }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ dash.url }}" target="_blank" class="access-btn">Acessar Ferramenta ↗</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

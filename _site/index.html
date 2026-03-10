@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight - Pesquisa Colaborativa em Saúde</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <link rel="preload" as="image" href="/assets/img/castelo-fiocruz.jpg" fetchpriority="high">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar ">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Hero Slider Premium -->
+<section class="hero-slider">
+    
+    
+    
+
+    <div class="slide active">
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=2000&auto=format&fit=crop');"></div>
+        
+        <div class="container slide-content">
+            <span class="slide-category">PROJETO EM DESTAQUE</span>
+            <h1 class="slide-title">Arboili: Infovigilância Precoce</h1>
+            <p class="slide-desc">Sistema de alerta para emergências em saúde pública utilizando Natural Language Processing (NLP) e dados da Web como Google Trends.</p>
+            <a href="/projetos/arboili.html"  class="btn-hero">
+                Saiba Mais <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    
+    
+
+    <div class="slide ">
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=2070&auto=format&fit=crop');"></div>
+        
+        <div class="container slide-content">
+            <span class="slide-category">DADOS ABERTOS</span>
+            <h1 class="slide-title">Dashboards & Ferramentas</h1>
+            <p class="slide-desc">Explore painéis interativos em R Shiny, PowerBI e Tableau para análise de indicadores de saúde pública.</p>
+            <a href="/dashboards.html"  class="btn-hero">
+                Saiba Mais <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    
+    
+
+    <div class="slide ">
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop');"></div>
+        
+        <div class="container slide-content">
+            <span class="slide-category">NOVA PUBLICAÇÃO</span>
+            <h1 class="slide-title">Epidemiological and digital syndromic surveillance data on dengue, chikungunya, and SARI in Brazil</h1>
+            <p class="slide-desc">Leia nosso artigo mais recente publicado em Scientific Data 13 (1).</p>
+            <a href="https://www.nature.com/articles/s41597-025-06155-6" target="_blank" class="btn-hero">
+                Saiba Mais <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    
+    <button class="slider-arrow prev" data-dir="-1" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slider-arrow next" data-dir="1" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
+
+    <div class="slider-dots">
+        
+        <span class="dot active" data-index="0"></span>
+        
+        <span class="dot " data-index="1"></span>
+        
+        <span class="dot " data-index="2"></span>
+        
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-down">
+        <a href="#insight-section" aria-label="Rolar para baixo">
+            <div class="arrow">
+                <div class="arrow-top"></div>
+                <div class="arrow-bottom"></div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<div id="insight-section" class="manifesto-section">
+  <div class="container" style="text-align: center">
+    <h2 class="manifesto-title" style="margin-top: -100px; margin-bottom: -150px;">
+      <img src="/assets/img/logoinsight.png" alt="Insight Logo" class="insight-logo-image" style="width: 450px; max-width: 90%; height: auto; object-fit: contain; display: inline-block; pointer-events: none; user-select: none; position: relative;">
+    </h2>
+    <style>
+      .insight-logo-image {
+        filter: invert(0.75); /* Cinza (inverte apenas 75% do branco) */
+        transition: filter 0.3s ease;
+      }
+      body.dark-mode .insight-logo-image {
+        filter: none; /* Mantém a cor original (branco) no modo escuro */
+      }
+    </style>
+    <p class="manifesto-lead">
+      Uma iniciativa de pesquisa colaborativa operando na interseção entre
+      <span class="orange-highlight">Inteligência Artificial</span>, Saúde Pública e <span class="orange-highlight">Impacto Social</span>.
+    </p>
+    <div class="manifesto-divider"></div>
+    <p class="manifesto-sub">
+      Conectando instituições, dados e pesquisadores para fortalecer as
+      respostas aos desafios epidemiológicos contemporâneos, através de projetos
+      multi-institucionais e redes de pesquisa.
+    </p>
+  </div>
+</div>
+
+
+
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

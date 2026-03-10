@@ -1,0 +1,1430 @@
+/* Variáveis CSS Básicas (Refined) */
+/* Variáveis CSS Básicas (Observatório) */
+:root {
+  --bg-body: #0A1628;
+  --bg-card: #080808;
+  --text-title: #FFFFFF;
+  --text-desc: #CCCCCC;
+  --text-primary: #FFFFFF;
+  --navbar-text: #FFFFFF;
+  --card-bg: #080808;
+  --footer-bg: #000000;
+  --border-color: #1A4B8C;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+
+  --color-primary: #0A1628;
+  --color-accent: #FF6B00;
+  --color-bg-dark: #080808;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #CCCCCC;
+  --color-logo-blue: #1A4B8C;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.dark-mode {
+  /* Using base root variables naturally, but ensuring dark mode forces it if script is active */
+  --bg-body: var(--color-primary);
+  --bg-card: var(--color-bg-dark);
+  --card-bg: var(--color-bg-dark);
+  --text-title: var(--color-text-light);
+  --text-desc: var(--color-text-muted);
+  --text-primary: var(--color-text-light);
+  --navbar-text: var(--color-text-light);
+  --footer-bg: #000000;
+  --border-color: var(--color-logo-blue);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-desc);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Força as seções a mudarem de cor junto com o body */
+body, 
+section,
+.page-header-standard, 
+.projetos, /* Using the actual class from the file which is .projetos, not .projects-section */
+.projects-section {
+  background-color: var(--bg-body) !important;
+  transition: background-color 0.3s ease;
+}
+
+.page-header-standard h1,
+.page-header-standard h2,
+.projetos h3,
+.section-title {
+  color: var(--text-title) !important;
+}
+
+/* FORÇA BRUTA: Garante que seções não tenham fundo branco fixo no Dark Mode */
+body.dark-mode section,
+body.dark-mode .page-header-standard,
+body.dark-mode .main-content,
+body.dark-mode .projects-section,
+body.dark-mode .team-section,
+body.dark-mode .publications-section,
+body.dark-mode .about-main, /* Added explicit override for about page too */
+body.dark-mode .about-mission {
+  background-color: var(--bg-body) !important;
+  color: var(--text-desc) !important;
+  transition: background-color 0.3s ease;
+}
+
+/* Garante que os títulos dentro dessas seções fiquem claros */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .section-title,
+body.dark-mode .mission-title,
+body.dark-mode .about-title {
+  color: var(--text-title) !important;
+}
+
+/* Explicitly lighten paragraph text in specific dark mode sections */
+body.dark-mode .about-text,
+body.dark-mode .mission-text {
+  color: #d1d1d1 !important; /* Soft light gray - better comfort than pure white */
+}
+
+/* Dark Mode Overrides for Cards */
+body.dark-mode .project-card,
+body.dark-mode .collab-card,
+body.dark-mode .member-card,
+body.dark-mode .publication-card {
+  background-color: var(--bg-card); /* Explicitly using --bg-card var */
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Sombra mais forte no dark mode */
+}
+
+/* Ajuste dos Badges no Dark Mode */
+body.dark-mode .badge {
+  background-color: #333333; /* Cinza escuro */
+  color: #e0e0e0; /* Texto claro */
+  border: 1px solid #444; /* Borda sutil */
+}
+
+/* Ajuste do Link 'Ver Detalhes' no Dark Mode */
+body.dark-mode .card-link {
+  color: #b0b0b0; /* Cinza mais claro conforme pedido */
+}
+
+body.dark-mode .card-link::after {
+  background-color: #b0b0b0;
+}
+
+body.dark-mode .card-link:hover {
+  color: #ffffff; /* Branco ao passar o mouse */
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .card-title,
+body.dark-mode .member-name {
+  color: #f1f1f1 !important;
+}
+
+/* Styles do Botão Toggle (Task 2) */
+.nav-item-theme {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-label {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  border: 2px solid #ffffff; /* Match Colabore border */
+  background-color: transparent; /* Cleaner look to match outlines */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  line-height: 1;
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil */
+}
+
+.theme-toggle-input {
+  display: none;
+}
+
+.theme-toggle-icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transition: transform 500ms;
+  line-height: 0.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-icon--moon {
+  transition-delay: 200ms;
+  color: #b4b4b4;
+}
+
+.theme-toggle-icon--sun {
+  transform: scale(0);
+  color: var(--color-accent);
+}
+
+#switch:checked + .theme-toggle-icon--moon {
+  transform: rotate(360deg) scale(0);
+}
+
+#switch:checked ~ .theme-toggle-icon--sun {
+  transition-delay: 200ms;
+  transform: scale(1) rotate(360deg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  padding: 0;
+  transition:
+    background-color 0.3s ease,
+    padding 0.3s ease;
+}
+
+.navbar.navbar-light {
+  background-color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar.scrolled {
+  background-color: var(--color-accent) !important; /* Laranja conforme solicitado */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.navbar-light .nav-links a {
+  color: #ffffff;
+}
+
+.navbar.navbar-light .nav-links a:not(.nav-btn)::after {
+  background-color: #ffffff;
+}
+
+.navbar.navbar-light .nav-btn {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.navbar.navbar-light .nav-btn:hover {
+  background-color: #ffffff;
+  color: #2c2c2c;
+}
+
+.logo img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.navbar.navbar-light .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.navbar .container {
+  max-width: 100%;
+  padding: 10px 20px; /* Reduzido para deixar a navbar mais fina */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center; /* Garante que Texto, Botão e Toggle fiquem alinhados no meio verticalmente */
+}
+
+.logo img {
+  height: 90px; /* Increased from 80px */
+  margin-top: 10px; /* Adjusted from 6px */
+}
+
+.nav-links a {
+  font-family: "Barlow Condensed", sans-serif; /* Updated to Montserrat */
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff !important; /* FORCED WHITE for homepage/transparent navbar */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  text-decoration: none; /* Ensure no default underline */
+  position: relative; /* Required for the ::after effect */
+}
+
+.nav-links a:hover {
+  opacity: 1; /* Keep full opacity on hover for the effect */
+}
+
+/* Active State for Navbar Links */
+.navbar .nav-links a.active {
+  color: #ffffff !important; /* Branco Puro */
+  font-weight: 700; /* Negrito para destaque */
+  opacity: 1; /* Opacidade total */
+  /* border-bottom: 2px solid white;  Opcional based on user request, but usually good for accessibility */
+}
+
+.navbar .nav-links a {
+  /* Existing styles above handle color/font, but let's ensure base opacity transition */
+  color: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ); /* Slightly transparent by default for contrast with active */
+  transition: all 0.3s ease;
+}
+
+/* Underline hover effect for regular links (excluding the button) */
+.nav-links a:not(.nav-btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Slightly below the text */
+  height: 2px;
+  width: 0; /* Start invisible */
+  background-color: #fff;
+  transition: width 0.3s ease-in-out; /* Smooth animation */
+}
+
+.nav-links a:not(.nav-btn):hover::after {
+  width: 100%; /* Expand to full width on hover */
+}
+
+/* Ensure Active Link ALWAYS has the underline */
+.nav-links a.active:not(.nav-btn)::after {
+  width: 100%;
+}
+
+/* Page Header Standard (Master Styles) */
+.page-header-standard {
+  background-color: var(--bg-body); /* Usando variável em vez de branco fixo */
+  padding-top: 100px; /* Adjusted to 100px to clear navbar comfortably */
+  padding-bottom: 40px; /* Espaço até o conteúdo */
+  text-align: center; /* Centralizado */
+  width: 100%;
+}
+
+.page-header-standard h1 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.page-header-standard .subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Special style for 'Colabore' button */
+.nav-links .nav-btn {
+  border: 1px solid #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-links .nav-btn:hover {
+  background-color: #fff;
+  color: #000 !important; /* Invert colors on hover - FORCED BLACK to override link white */
+  opacity: 1; /* Override default opacity hover */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  /* background-image removed for LCP performance - now using <img class="hero-bg"> */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 0;
+  overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+/* New efficient Hero Background Image */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none; /* Prevent interaction */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Gradient overlay: Darker at top for navbar, lighter in center, subtle dark at bottom */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 22, 40, 0.8) 0%,
+    rgba(10, 22, 40, 0.4) 30%,
+    rgba(8, 8, 8, 0.8) 100%
+  );;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-family: "Barlow Condensed", sans-serif; /* Institutional font */
+  font-size: 4rem;
+  font-weight: 700; /* Bold for impact */
+  font-style: normal; /* No italics */
+  margin-bottom: 10px;
+  line-height: 1.1;
+  color: #ffffff !important; /* FORCED WHITE for homepage */
+  /* Strong text shadow for readability against the lighter background */
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700; /* Increased weight for better readability */
+  font-style: normal; /* No italics */
+  margin-bottom: 40px;
+  opacity: 1; /* Increased opacity */
+  color: #ffffff !important; /* FORCED WHITE for homepage */
+  /* Stronger text shadow to pop against complex backgrounds */
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Projetos Section */
+.projetos {
+  background-color: #ffffff;
+  padding: 30px 0 80px 0;
+  margin-top: 70px;
+}
+
+.section-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding-top: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Projects Grid - 3 columns responsive */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Project Card */
+.project-card {
+  background-color: var(--bg-card);
+  color: var(--text-desc);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card h3,
+.card-title {
+  color: var(--text-title) !important;
+}
+
+.project-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Card Image */
+.card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Card Body */
+.card-body {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.card-description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-desc);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* Badges/Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e8e8e8;
+  color: #2c2c2c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Footer */
+.card-footer {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-link {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: #2c2c2c;
+  transition: width 0.3s ease;
+}
+
+.card-link:hover::after {
+  width: 100%;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projetos {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Simple hide for mobile for this MVP */
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== SOBRE PAGE - REDESIGN (Butantan Style) ===== */
+
+/* Page Hero */
+.page-hero {
+  position: relative;
+  height: 65vh; /* Aumentado um pouco conforme solicitado (era 50vh) */
+  width: 100%;
+  /* Background logic moved to <img> tag for LCP */
+  margin-top: 0; /* Cola no topo */
+  overflow: hidden;
+}
+
+/* Overlay Escuro */
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Leve camada escura para o menu */
+  z-index: 1;
+}
+
+/* Ajuste na Navbar para ela ficar sobre o banner se for transparente */
+/* (A navbar já é fixed e transparente no main.css, então vai funcionar) */
+
+/* Main About Section */
+.about-main {
+  background-color: #ffffff;
+  /* Remover margin-top pois o banner já ocupa espaço e queremos controle total */
+  margin-top: 0;
+  padding-top: 80px; /* Adicionado espaçamento superior conforme pedido */
+  padding-bottom: 80px;
+}
+
+/* Título (Agora dentro do grid, ajustado) */
+.about-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 25px; /* Reduzido um pouco pois agora esta direto sobre o texto */
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* Grid layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Coluna da imagem menor, texto maior */
+  gap: 60px;
+  align-items: start; /* Alinhar ao topo */
+}
+
+/* Coluna Imagem */
+.about-image {
+  overflow: hidden;
+  /* Bordas retas conforme pedido */
+  border-radius: 0;
+  box-shadow: none; /* Estilo mais clean/sério */
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  /* Removemos arredondamentos se houver */
+}
+
+/* Coluna Conteúdo */
+.about-content {
+  padding: 0; /* Reset padding interno */
+  padding-top: 20px; /* Leve ajuste se precisar alinhar oticamente com imagem */
+}
+
+.about-text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem; /* Aumentado um pouco (era 1rem) */
+  color: #555;
+  line-height: 1.8; /* Aumentado line-height para acompanhar o font-size maior */
+  margin-bottom: 25px;
+  text-align: justify; /* Justificado conforme pedido */
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+  .page-hero {
+    height: 40vh; /* Um pouco menor no mobile */
+  }
+
+  .about-header {
+    padding-top: 40px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+}
+
+/* Mission Section - Single Column */
+.about-mission {
+  background-color: #f5f5f5;
+  padding: 80px 0;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+}
+
+.mission-text {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.9;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+/* Responsive - Sobre Page */
+@media (max-width: 768px) {
+  .about-main {
+    padding: 60px 0;
+    margin-top: 70px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+
+  .about-mission {
+    padding: 60px 0;
+  }
+
+  .mission-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .mission-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== EQUIPE PAGE (Minimalist / Academic Style) ===== */
+
+.team-page-body {
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Container override for team page (more spacious) */
+.team-container {
+  max-width: 1200px;
+  padding: 150px 20px 60px 20px; /* Increased top padding to 150px */
+}
+
+/* Section Styling */
+.team-section {
+  margin-bottom: 80px;
+}
+
+.team-section-title {
+  font-family: "Barlow Condensed", sans-serif; /* Matched project font */
+  font-weight: 700; /* Bold as requested */
+  font-size: 2rem; /* ~32px */
+  color: #333;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+  border-bottom: none; /* Explicitly no border */
+  padding-bottom: 0;
+}
+
+/* Grid Layout */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns on desktop */
+  gap: 40px; /* Spacious gap */
+}
+
+/* Member Card (Minimalist) */
+.member-card {
+  display: flex;
+  flex-direction: column;
+  /* No border, no shadow */
+  background: transparent;
+}
+
+/* Photo */
+.member-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Square */
+  object-fit: cover;
+  border-radius: 6px; /* Slight rounding */
+  margin-bottom: 16px;
+  /* transition: filter 0.3s ease; - Removed transition as we are not changing filter on hover anymore */
+}
+
+/* Hover effect removed as per user request for colorful photos by default */
+/* .member-card:hover .member-photo {
+    filter: grayscale(0%);
+} */
+
+/* Typography -- FORCE COLORS to override body white */
+.member-info {
+  text-align: left;
+}
+
+.member-name {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1rem; /* 16px */
+  color: #222 !important; /* Force dark color */
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.member-role {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-desc) !important; /* Adaptable grey color */
+  margin-bottom: 2px;
+  font-weight: 400;
+}
+
+.member-aff {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem; /* 12px */
+  color: var(--text-desc) !important; /* Adaptable light grey color */
+  margin-top: 4px;
+}
+
+/* Social Buttons (Equipe Cards) */
+.card-actions {
+  display: flex;
+  gap: 0; /* Managed by padding/border */
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px; /* Increased spacing downwards */
+}
+
+.social-btn {
+  border: none; /* Removed border */
+  background: transparent;
+  color: #999 !important; /* Lighter grey for subtlety */
+  font-size: 0.65rem; /* Slightly smaller */
+  padding: 0 15px; /* Spacing */
+  border-radius: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+/* Add separator dash between items */
+.social-btn + .social-btn {
+  border-left: 1px solid #ddd;
+}
+
+.social-btn:hover {
+  color: var(--color-accent) !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns tablet */
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns mobile */
+    gap: 20px;
+  }
+
+  .team-section-title {
+    font-size: 1.75rem;
+  }
+}
+
+/* --- Hero Slider Premium --- */
+/* --- Hero Slider (Correção de Alinhamento) --- */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Altura Full Screen */
+  min-height: 600px;
+  overflow: hidden;
+  background-color: #121212;
+  margin-top: 0;
+  padding: 0;
+}
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+
+  /* A Mágica da Centralização: */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza Verticalmente */
+  align-items: center; /* Centraliza Horizontalmente */
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: scale(1);
+  transition: transform 8s ease-out;
+}
+.slide.active .slide-bg {
+  transform: scale(1.1);
+}
+
+/* Overlay Escuro para o texto sempre ler bem */
+.slide-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 22, 40, 0.8) 0%,
+    rgba(10, 22, 40, 0.4) 30%,
+    rgba(8, 8, 8, 0.8) 100%
+  );;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  width: 100%;
+  max-width: 900px;
+  text-align: center; /* Garante que o texto fique no meio */
+  padding: 0 20px;
+
+  /* TRUQUE VISUAL: Compensa a altura do menu para o centro visual ficar perfeito */
+  /* Reduced from 60px to 30px to allow more space for content */
+  margin-top: 30px;
+}
+
+.slide-category {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 20px; /* Reverted to 20px */
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 18px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slide-title {
+  /* Font Size Fluid: Reduced max from 3.8rem to 3rem to handle long titles better */
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: 30px; /* Reduced from 40px */
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  line-height: 1.15; /* Slightly reduced from 1.2 */
+  color: #fff;
+}
+
+.slide-desc {
+  font-size: 1.2rem; /* Slightly reduced from 1.25rem */
+  margin-bottom: 40px; /* Reduced from 50px */
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto; /* Centraliza o bloco de texto */
+}
+
+/* Botão e Navegação */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-accent);
+  color: white !important;
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(203, 79, 8, 0.4);
+}
+.btn-hero:hover {
+  background-color: #e65c0a;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(203, 79, 8, 0.6);
+}
+.btn-hero i {
+  transition: transform 0.3s ease;
+}
+.btn-hero:hover i {
+  transform: translateX(5px);
+}
+
+/* Navegação (Setas e Dots dinâmicos) */
+.slider-arrow {
+  position: absolute;
+  top: 52%; /* Ajustado levemente para baixo */
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s backdrop-filter 0.3s;
+  backdrop-filter: blur(5px);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-arrow:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-50%) scale(1.1);
+}
+.slider-arrow.prev {
+  left: 40px;
+}
+.slider-arrow.next {
+  right: 40px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.dot.active {
+  background-color: var(--color-accent);
+  width: 35px; /* Estica o dot ativo */
+}
+.dot:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Scroll Down Indicator - New Custom Arrow */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.scroll-down a {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+/* Custom Arrow CSS */
+.arrow {
+  cursor: pointer;
+  height: 25px;
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg); /* Rotate to point down */
+  transition: transform 0.1s;
+}
+
+.arrow-top,
+.arrow-bottom {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Lighter grey for visibility on dark hero */
+  height: 2px;
+  left: -5px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.arrow-top:after,
+.arrow-bottom:after {
+  background-color: var(--color-accent) !important; /* Force orange on interaction */
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.15s;
+}
+
+.arrow-top {
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+
+.arrow-top:after {
+  left: 100%;
+  right: 0;
+  transition-delay: 0s;
+}
+
+.arrow-bottom {
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+
+.arrow-bottom:after {
+  left: 0;
+  right: 100%;
+  transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-top:after {
+  left: 0;
+  transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-bottom:after {
+  right: 0;
+  transition-delay: 0s;
+}
+
+.arrow:active {
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.9);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 2.2rem;
+  }
+  .slide-desc {
+    font-size: 1rem;
+  }
+  .hero-slider {
+    height: 70vh;
+    min-height: 500px;
+  }
+}
+
+/* --- Manifesto Section --- */
+.manifesto-section {
+  padding: 20px 0;
+  background-color: var(--bg-body);
+  transition: background-color 0.3s ease;
+}
+.manifesto-title {
+  font-size: 3.5rem;
+  color: var(--text-title);
+  font-weight: 900;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+.manifesto-lead {
+  font-size: 1.4rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  max-width: 800px;
+  margin: 0 auto 35px;
+  line-height: 1.5;
+}
+.manifesto-divider {
+  width: 80px;
+  height: 5px;
+  background-color: var(--color-accent);
+  margin: 0 auto 35px;
+  border-radius: 3px;
+}
+.manifesto-sub {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* --- Botão Quadrado de Idioma --- */
+.circular-btn.lang-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff; /* Match Colabore border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+/* Efeito ao passar o mouse e estado ativo */
+.circular-btn.lang-toggle:hover,
+.circular-btn.lang-toggle.active-lang {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Fundo branco translúcido em vez de laranja opaco */
+  color: #ffffff;
+  border: 2px solid #ffffff; /* Mantém a borda branca */
+}
+
+/* Oculta as barras nativas do Google */
+#google_translate_element,
+.skiptranslate,
+.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+
+/* ================= OBSERATÓRIO CUSTOM GRAPHICS ================= */
+
+/* Orange Highlight (Marca-texto) */
+.orange-highlight {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0 4px;
+  display: inline;
+}
+
+/* Giant Quotes */
+.giant-quote {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border-radius: 8px;
+  margin: 30px 0;
+}
+
+.giant-quote::before, .giant-quote::after {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  color: var(--color-accent);
+  opacity: 0.3;
+  position: absolute;
+  line-height: 1;
+}
+
+.giant-quote::before {
+  top: -20px;
+  left: 10px;
+}
+
+.giant-quote::after {
+  bottom: -60px;
+  right: 10px;
+}
+
+.cta-arrow::after {
+  content: ' \2192'; /* Unicode arrow right */
+  font-weight: bold;
+  transition: margin-left 0.3s ease;
+}
+
+.cta-arrow:hover::after {
+  margin-left: 8px;
+}

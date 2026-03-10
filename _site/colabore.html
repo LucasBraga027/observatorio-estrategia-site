@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colabore Conosco</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar ">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+/* Navbar Orange Style (Matches Sobre) */
+.navbar {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease-in-out;
+}
+.navbar.scrolled {
+    background-color: #C65000 !important; /* Orange on Scroll */
+}
+/* Generic Links (Exclude Button) */
+.navbar .nav-links a:not(.nav-btn).active, 
+.navbar .nav-links a:not(.nav-btn):hover {
+    color: #ffffff !important;
+}
+/* Ensure links are white on the hero match generic */
+.navbar .nav-links a:not(.nav-btn) {
+    color: #ffffff !important;
+}
+
+/* Button Specific Styles */
+.navbar .nav-links .nav-btn {
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+.navbar .nav-links .nav-btn:hover {
+    background-color: #ffffff !important;
+    color: #C65000 !important; /* Orange Text on White Background */
+    border-color: #ffffff !important;
+}
+
+/* Hero Section */
+.hero-collab {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/img/2c00891bc1b29b047472a41caa6ca8dccb8fd090.jpg');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+.hero-collab h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Caminhos para Colaborar */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333; /* Dark mode handled via main.css global override usually, but let's be safe */
+    font-weight: 700;
+}
+body.dark-mode .section-title {
+    color: var(--text-title) !important;
+}
+
+.collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.collab-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid #CB4F08; /* Laranja Fiocruz */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Dark Mode Card */
+body.dark-mode .collab-card {
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-color: #CB4F08; /* Keep top border */
+}
+
+.collab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+body.dark-mode .collab-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Stronger shadow in dark */
+}
+
+/* Opcional: Adicionar uma transição suave para o hover */
+.collab-card:hover .card-icon-large {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.card-icon-large {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    display: block;
+    color: #CB4F08; /* Garante que o ícone fique Laranja Fiocruz */
+}
+
+.collab-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+}
+body.dark-mode .collab-card h3 {
+    color: var(--text-title);
+}
+
+.collab-card p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+body.dark-mode .collab-card p {
+    color: var(--text-desc);
+}
+
+.btn-card {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #CB4F08;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+    align-self: center;
+}
+.btn-card:hover {
+    background-color: #a03c05;
+    color: white;
+}
+
+/* Section Dados Abertos (Full Width) */
+.open-science-section {
+    background-color: #F4F4F4; /* Ciano claro sutil */
+    padding: 80px 0;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+/* Dark Mode Contrast Section */
+body.dark-mode .open-science-section {
+    background-color: #1e1e1e; /* Distinct from black body */
+    border-color: #333;
+}
+
+.open-science-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #222;
+    font-weight: 700;
+}
+body.dark-mode .open-science-section h2 {
+    color: var(--text-title);
+}
+
+.open-science-section p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+body.dark-mode .open-science-section p {
+    color: var(--text-desc);
+}
+
+.btn-outline-orange {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #CB4F08;
+    color: #CB4F08;
+    background: transparent;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.btn-outline-orange:hover {
+    background-color: #CB4F08;
+    color: white;
+}
+</style>
+
+<!-- Hero Section -->
+<div class="hero-collab">
+    <div class="container">
+        <h1>Construa o <span class="orange-highlight">Futuro da Saúde</span> Conosco</h1>
+        <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">Unindo ciência, tecnologia e sociedade.</p>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Caminhos para Colaborar</h2>
+    
+    <div class="collab-grid">
+        <!-- Card 1: Estudantes -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-graduation-cap"></i></span>
+                <h3>Para Estudantes</h3>
+                <p>Oportunidades de Iniciação Científica, Mestrado e Doutorado. Venha desenvolver sua pesquisa conosco.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+
+        <!-- Card 2: Parcerias -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-handshake-simple"></i></span>
+                <h3>Parcerias Institucionais</h3>
+                <p>Empresas e universidades: vamos co-criar soluções inovadoras para a saúde pública.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+
+        <!-- Card 3: Dados Abertos (Card de entrada) -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-database"></i></span>
+                <h3>Dados Abertos</h3>
+                <p>Acesse nossos datasets e contribua com análises para o enfrentamento de doenças.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Full Width Section: Dados Abertos -->
+<div class="open-science-section">
+    <div class="container">
+        <h2>Acreditamos na Ciência Aberta</h2>
+        <p>Acesse nossos repositórios públicos, colabore com códigos e ajude a expandir o conhecimento em saúde.</p>
+        <a href="#" class="btn-outline-orange">Acessar Repositórios</a>
+    </div>
+</div>
+
+
+    
+    
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

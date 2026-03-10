@@ -1,0 +1,88 @@
+---
+layout: default
+title: Insight - Pesquisa Colaborativa em Saúde
+---
+
+<!-- Hero Slider Premium -->
+<section class="hero-slider">
+    {% for destaque in site.data.destaques %}
+    
+    {% if destaque.dynamic == 'latest_pub' %}
+        {% assign pubs_ordenadas = site.data.publications | sort: 'year' | reverse %}
+        {% assign latest_pub = pubs_ordenadas[0] %}
+        
+        {% assign slide_title = latest_pub.title %}
+        {% assign slide_desc = "Leia nosso artigo mais recente publicado em " | append: latest_pub.venue | append: "." %}
+        {% assign slide_url = latest_pub.link_url %}
+        {% assign slide_tag = "NOVA PUBLICAÇÃO" %}
+        {% assign target_blank = 'target="_blank"' %}
+    {% else %}
+        {% assign slide_title = destaque.title %}
+        {% assign slide_desc = destaque.description %}
+        {% assign slide_url = destaque.url | relative_url %}
+        {% assign slide_tag = destaque.category %}
+        {% assign target_blank = '' %}
+    {% endif %}
+
+    <div class="slide {% if forloop.first %}active{% endif %}">
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('{{ destaque.image }}');"></div>
+        
+        <div class="container slide-content">
+            <span class="slide-category">{{ slide_tag }}</span>
+            <h1 class="slide-title">{{ slide_title }}</h1>
+            <p class="slide-desc">{{ slide_desc }}</p>
+            <a href="{{ slide_url }}" {{ target_blank }} class="btn-hero">
+                Saiba Mais <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <button class="slider-arrow prev" data-dir="-1" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slider-arrow next" data-dir="1" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
+
+    <div class="slider-dots">
+        {% for destaque in site.data.destaques %}
+        <span class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+        {% endfor %}
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-down">
+        <a href="#insight-section" aria-label="Rolar para baixo">
+            <div class="arrow">
+                <div class="arrow-top"></div>
+                <div class="arrow-bottom"></div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<div id="insight-section" class="manifesto-section">
+  <div class="container" style="text-align: center">
+    <h2 class="manifesto-title" style="margin-top: -100px; margin-bottom: -150px;">
+      <img src="/assets/img/logoinsight.png" alt="Insight Logo" class="insight-logo-image" style="width: 450px; max-width: 90%; height: auto; object-fit: contain; display: inline-block; pointer-events: none; user-select: none; position: relative;">
+    </h2>
+    <style>
+      .insight-logo-image {
+        filter: invert(0.75); /* Cinza (inverte apenas 75% do branco) */
+        transition: filter 0.3s ease;
+      }
+      body.dark-mode .insight-logo-image {
+        filter: none; /* Mantém a cor original (branco) no modo escuro */
+      }
+    </style>
+    <p class="manifesto-lead">
+      Uma iniciativa de pesquisa colaborativa operando na interseção entre
+      <span class="orange-highlight">Inteligência Artificial</span>, Saúde Pública e <span class="orange-highlight">Impacto Social</span>.
+    </p>
+    <div class="manifesto-divider"></div>
+    <p class="manifesto-sub">
+      Conectando instituições, dados e pesquisadores para fortalecer as
+      respostas aos desafios epidemiológicos contemporâneos, através de projetos
+      multi-institucionais e redes de pesquisa.
+    </p>
+  </div>
+</div>
+
+

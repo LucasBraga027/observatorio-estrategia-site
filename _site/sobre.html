@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar ">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+    /* 1. Navbar Dynamic (Transparent -> Orange) */
+    .navbar {
+        background-color: transparent !important; /* Start Transparent on Photo */
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    /* State when scrolled (added by main.js) */
+    .navbar.scrolled {
+        background-color: #C65000 !important; /* Turns Orange on Scroll */
+    }
+
+    .navbar .nav-links a {
+        color: #ffffff !important;
+    }
+    .navbar .nav-links a.active, 
+    .navbar .nav-links a:hover {
+        font-weight: 700;
+    }
+
+    /* FIX: Match Index Style */
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        padding: 8px 20px;
+        font-weight: 600;
+    }
+
+    /* Fix visibility on hover (Black text on White bg, consistent with Index) */
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: #000000 !important;
+    }
+
+    /* 2. Typography Standard */
+    .about-title {
+        color: #C65000 !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem; /* Large and robust */
+        font-weight: 800;
+        margin-bottom: 24px;
+    }
+    
+    /* Body background governed by main.css */
+
+    /* 3. Magic Bar Interaction */
+    .about-text-content {
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    .about-text-content::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%; /* Hidden start */
+        height: 5px; /* Thick bar */
+        background-color: #C65000;
+        transition: width 0.4s ease-in-out;
+    }
+
+    .about-text-content:hover::after {
+        width: 100%; /* Expand to full width */
+    }
+
+    /* 4. Text Content */
+    .about-text {
+        color: #333;
+        line-height: 1.8 !important; /* Elegant spacing */
+        font-size: 1.1rem;
+    }
+</style>
+
+<!-- Page Hero (Banner de Topo) -->
+<!-- Imagem definida inline conforme solicitado pelo usuário -->
+<!-- Page Hero (Banner de Topo) -->
+<section class="page-hero">
+    <img src="/assets/img/2c00891bc1b29b047472a41caa6ca8dccb8fd090.jpg" class="hero-bg" alt="Banner Sobre" fetchpriority="high">
+</section>
+
+<!-- Seção Principal: O que fazemos -->
+<section class="about-main">
+    <div class="container">
+        
+        <!-- Grid 2 Colunas (Imagem + Texto) -->
+        <div class="about-grid">
+            <!-- Coluna 1: Imagem Menor/Detalhe -->
+            <div class="about-image">
+                <img src="https://picsum.photos/500/600?random=10" alt="Detalhe laboratório">
+            </div>
+
+            <!-- Coluna 2: Texto Institucional -->
+            <div class="about-content about-text-content">
+                <h2 class="about-title">O que fazemos</h2>
+                <p class="about-text">
+                    A Fiocruz é uma instituição de pesquisa biomédica de <span class="orange-highlight">importância estratégica</span> para o Brasil. 
+                    Atuamos como centro de referência em vigilância em saúde, desenvolvimento tecnológico e inovação 
+                    para o Sistema Único de Saúde (SUS), com foco em doenças infecciosas e crônicas que afetam a população.
+                </p>
+                <div class="giant-quote">
+                    Nossa equipe multidisciplinar trabalha na interface entre pesquisa básica e aplicada, gerando 
+                    conhecimento que se traduz em políticas públicas, produtos e serviços de saúde. Colaboramos 
+                    com instituições nacionais e internacionais para fortalecer a resposta do Brasil aos desafios 
+                    epidemiológicos contemporâneos.
+                </div>
+                <p class="about-text">
+                    Comprometemos com a excelência científica, a responsabilidade social e a democratização do 
+                    conhecimento, contribuindo para melhorar a qualidade de vida e a segurança sanitária da população brasileira 
+                    e global.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

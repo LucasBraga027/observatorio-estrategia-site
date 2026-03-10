@@ -1,0 +1,50 @@
+---
+layout: default
+title: "Arboili: Infovigilância Precoce"
+permalink: /projetos/arboili.html
+---
+<style>
+  .proj-hero { background: linear-gradient(rgba(18,18,18,0.8), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=2000') center/cover; padding: 100px 20px 50px; text-align: center; color: white; }
+  .proj-title { font-size: 3rem; font-weight: 800; color: #CB4F08; margin-bottom: 15px; }
+  .proj-subtitle { font-size: 1.2rem; font-weight: 300; max-width: 800px; margin: 0 auto; color: #ccc; }
+  .proj-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+  .proj-content h2 { color: #CB4F08; margin-top: 30px; font-size: 1.8rem; }
+  .proj-content p { font-size: 1.1rem; line-height: 1.8; color: var(--text-desc); margin-bottom: 20px; text-align: justify; }
+  .proj-sidebar { background: var(--bg-card); padding: 30px; border-radius: 10px; border: 1px solid var(--border-color); height: fit-content; box-shadow: 0 4px 15px var(--shadow-color); }
+  .proj-sidebar h3 { font-size: 1.3rem; margin-bottom: 20px; border-bottom: 2px solid #CB4F08; padding-bottom: 10px; color: var(--text-title);}
+  .proj-sidebar p { font-size: 0.95rem; margin-bottom: 15px; color: var(--text-desc); }
+  .proj-sidebar strong { color: var(--text-title); }
+  .proj-tag { display: inline-block; background: #CB4F08; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.8rem; margin: 2px; }
+  @media (max-width: 768px) { .proj-grid { grid-template-columns: 1fr; } .proj-title { font-size: 2rem; } }
+</style>
+
+<div class="proj-hero">
+    <h1 class="proj-title">Arboili: O sistema de infovigilância precoce</h1>
+    <p class="proj-subtitle">Atrasos na notificação tradicional de arboviroses (Dengue, Chikungunya) e síndromes respiratórias (COVID-19, Influenza).</p>
+</div>
+
+<div class="proj-grid">
+    <div class="proj-content">
+        <h2>A Inovação: O Poder da Web e NLP</h2>
+        <p>Este projeto avalia dados da Web como preditores precoces. A OMS reconhece esse potencial através do sistema <em>Epidemic Intelligence from Open Sources (EIOS)</em>. O Arboili combina os dados do EIOS com as pesquisas do <strong>Google Trends</strong> (frequência de buscas por sintomas e doenças) sem o alto custo imposto por redes como o X (antigo Twitter).</p>
+        <p>A ferramenta estatística central é o <strong>Natural Language Processing (NLP)</strong>, usada para analisar dados textuais, descobrir associações entre doenças e sintomas e detectar o "desvio semântico" que pode sinalizar potenciais novas cepas ou doenças desconhecidas.</p>
+        
+        <h2>Metodologia e Impacto</h2>
+        <p>Além do NLP, o projeto emprega séries temporais, <em>wavelets</em> e <em>machine learning</em>. O resultado final será um <strong>dashboard online de acesso aberto</strong> para acompanhamento espaço-temporal no nível estadual. Esse sistema será integrado ao InfoDengue, melhorando a acurácia das análises de risco enviadas semanalmente para a Secretaria de Vigilância em Saúde.</p>
+    </div>
+    
+    <div class="proj-sidebar">
+        <h3>Ficha Técnica</h3>
+        <p><strong>Coordenação Geral:</strong> Cláudia Codeço</p>
+        <p><strong>Coordenação Adjunta:</strong> Alexandra Almeida</p>
+        <p><strong>Tecnologias:</strong></p>
+        <div>
+            <span class="proj-tag">NLP</span>
+            <span class="proj-tag">Machine Learning</span>
+            <span class="proj-tag">Séries Temporais</span>
+            <span class="proj-tag">Big Data</span>
+        </div>
+        <br>
+        <p><strong>Status:</strong> Em Desenvolvimento</p>
+    </div>
+</div>

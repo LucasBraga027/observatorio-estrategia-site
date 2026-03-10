@@ -1,0 +1,120 @@
+---
+layout: default
+title: Sobre
+permalink: /sobre.html
+navbar_class: ""
+---
+<style>
+    /* 1. Navbar Dynamic (Transparent -> Orange) */
+    .navbar {
+        background-color: transparent !important; /* Start Transparent on Photo */
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    /* State when scrolled (added by main.js) */
+    .navbar.scrolled {
+        background-color: #C65000 !important; /* Turns Orange on Scroll */
+    }
+
+    .navbar .nav-links a {
+        color: #ffffff !important;
+    }
+    .navbar .nav-links a.active, 
+    .navbar .nav-links a:hover {
+        font-weight: 700;
+    }
+
+    /* FIX: Match Index Style */
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        padding: 8px 20px;
+        font-weight: 600;
+    }
+
+    /* Fix visibility on hover (Black text on White bg, consistent with Index) */
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: #000000 !important;
+    }
+
+    /* 2. Typography Standard */
+    .about-title {
+        color: #C65000 !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem; /* Large and robust */
+        font-weight: 800;
+        margin-bottom: 24px;
+    }
+    
+    /* Body background governed by main.css */
+
+    /* 3. Magic Bar Interaction */
+    .about-text-content {
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    .about-text-content::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%; /* Hidden start */
+        height: 5px; /* Thick bar */
+        background-color: #C65000;
+        transition: width 0.4s ease-in-out;
+    }
+
+    .about-text-content:hover::after {
+        width: 100%; /* Expand to full width */
+    }
+
+    /* 4. Text Content */
+    .about-text {
+        color: #333;
+        line-height: 1.8 !important; /* Elegant spacing */
+        font-size: 1.1rem;
+    }
+</style>
+
+<!-- Page Hero (Banner de Topo) -->
+<!-- Imagem definida inline conforme solicitado pelo usuário -->
+<!-- Page Hero (Banner de Topo) -->
+<section class="page-hero">
+    <img src="/assets/img/2c00891bc1b29b047472a41caa6ca8dccb8fd090.jpg" class="hero-bg" alt="Banner Sobre" fetchpriority="high">
+</section>
+
+<!-- Seção Principal: O que fazemos -->
+<section class="about-main">
+    <div class="container">
+        
+        <!-- Grid 2 Colunas (Imagem + Texto) -->
+        <div class="about-grid">
+            <!-- Coluna 1: Imagem Menor/Detalhe -->
+            <div class="about-image">
+                <img src="https://picsum.photos/500/600?random=10" alt="Detalhe laboratório">
+            </div>
+
+            <!-- Coluna 2: Texto Institucional -->
+            <div class="about-content about-text-content">
+                <h2 class="about-title">O que fazemos</h2>
+                <p class="about-text">
+                    A Fiocruz é uma instituição de pesquisa biomédica de <span class="orange-highlight">importância estratégica</span> para o Brasil. 
+                    Atuamos como centro de referência em vigilância em saúde, desenvolvimento tecnológico e inovação 
+                    para o Sistema Único de Saúde (SUS), com foco em doenças infecciosas e crônicas que afetam a população.
+                </p>
+                <div class="giant-quote">
+                    Nossa equipe multidisciplinar trabalha na interface entre pesquisa básica e aplicada, gerando 
+                    conhecimento que se traduz em políticas públicas, produtos e serviços de saúde. Colaboramos 
+                    com instituições nacionais e internacionais para fortalecer a resposta do Brasil aos desafios 
+                    epidemiológicos contemporâneos.
+                </div>
+                <p class="about-text">
+                    Comprometemos com a excelência científica, a responsabilidade social e a democratização do 
+                    conhecimento, contribuindo para melhorar a qualidade de vida e a segurança sanitária da população brasileira 
+                    e global.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+- title: "Monitoramento Dengue R-Shiny"
+  description: "Painel interativo para acompanhamento de casos de dengue em tempo real com mapas de calor e séries temporais."
+  tool: "R Shiny"
+  image: "https://picsum.photos/seed/dash1/800/600"
+  url: "https://shiny.rstudio.com/gallery/covid19-tracker.html"
+  featured: true
+
+- title: "Análise Epidemiológica Global"
+  description: "Dashboard desenvolvido no PowerBI para análise exploratória de dados de saúde pública."
+  tool: "PowerBI"
+  image: "https://picsum.photos/seed/dash2/800/600"
+  url: "#"
+  featured: false
+
+- title: "Visualização de Dados Genômicos"
+  description: "Dashboard desenvolvido no Tableau para análise exploratória de sequenciamento genético e variantes."
+  tool: "Tableau"
+  image: "https://picsum.photos/seed/dash3/800/600"
+  url: "https://public.tableau.com/en-us/gallery"
+  featured: false

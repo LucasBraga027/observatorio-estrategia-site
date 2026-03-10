@@ -1,0 +1,70 @@
+
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>

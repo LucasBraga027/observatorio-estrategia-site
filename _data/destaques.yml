@@ -1,0 +1,14 @@
+- title: "Arboili: Infovigilância Precoce"
+  category: "PROJETO EM DESTAQUE"
+  description: "Sistema de alerta para emergências em saúde pública utilizando Natural Language Processing (NLP) e dados da Web como Google Trends."
+  image: "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=2000&auto=format&fit=crop"
+  url: "/projetos/arboili.html"
+
+- title: "Dashboards & Ferramentas"
+  category: "DADOS ABERTOS"
+  description: "Explore painéis interativos em R Shiny, PowerBI e Tableau para análise de indicadores de saúde pública."
+  image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?q=80&w=2070&auto=format&fit=crop"
+  url: "/dashboards.html"
+
+- dynamic: "latest_pub"
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop"

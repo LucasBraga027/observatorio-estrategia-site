@@ -1,0 +1,255 @@
+---
+layout: default
+title: Colabore Conosco
+---
+<style>
+/* Navbar Orange Style (Matches Sobre) */
+.navbar {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease-in-out;
+}
+.navbar.scrolled {
+    background-color: #C65000 !important; /* Orange on Scroll */
+}
+/* Generic Links (Exclude Button) */
+.navbar .nav-links a:not(.nav-btn).active, 
+.navbar .nav-links a:not(.nav-btn):hover {
+    color: #ffffff !important;
+}
+/* Ensure links are white on the hero match generic */
+.navbar .nav-links a:not(.nav-btn) {
+    color: #ffffff !important;
+}
+
+/* Button Specific Styles */
+.navbar .nav-links .nav-btn {
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+.navbar .nav-links .nav-btn:hover {
+    background-color: #ffffff !important;
+    color: #C65000 !important; /* Orange Text on White Background */
+    border-color: #ffffff !important;
+}
+
+/* Hero Section */
+.hero-collab {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/img/2c00891bc1b29b047472a41caa6ca8dccb8fd090.jpg');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+.hero-collab h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Caminhos para Colaborar */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333; /* Dark mode handled via main.css global override usually, but let's be safe */
+    font-weight: 700;
+}
+body.dark-mode .section-title {
+    color: var(--text-title) !important;
+}
+
+.collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.collab-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid #CB4F08; /* Laranja Fiocruz */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Dark Mode Card */
+body.dark-mode .collab-card {
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-color: #CB4F08; /* Keep top border */
+}
+
+.collab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+body.dark-mode .collab-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* Stronger shadow in dark */
+}
+
+/* Opcional: Adicionar uma transição suave para o hover */
+.collab-card:hover .card-icon-large {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.card-icon-large {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    display: block;
+    color: #CB4F08; /* Garante que o ícone fique Laranja Fiocruz */
+}
+
+.collab-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+}
+body.dark-mode .collab-card h3 {
+    color: var(--text-title);
+}
+
+.collab-card p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+body.dark-mode .collab-card p {
+    color: var(--text-desc);
+}
+
+.btn-card {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #CB4F08;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+    align-self: center;
+}
+.btn-card:hover {
+    background-color: #a03c05;
+    color: white;
+}
+
+/* Section Dados Abertos (Full Width) */
+.open-science-section {
+    background-color: #F4F4F4; /* Ciano claro sutil */
+    padding: 80px 0;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+/* Dark Mode Contrast Section */
+body.dark-mode .open-science-section {
+    background-color: #1e1e1e; /* Distinct from black body */
+    border-color: #333;
+}
+
+.open-science-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #222;
+    font-weight: 700;
+}
+body.dark-mode .open-science-section h2 {
+    color: var(--text-title);
+}
+
+.open-science-section p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+body.dark-mode .open-science-section p {
+    color: var(--text-desc);
+}
+
+.btn-outline-orange {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #CB4F08;
+    color: #CB4F08;
+    background: transparent;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.btn-outline-orange:hover {
+    background-color: #CB4F08;
+    color: white;
+}
+</style>
+
+<!-- Hero Section -->
+<div class="hero-collab">
+    <div class="container">
+        <h1>Construa o <span class="orange-highlight">Futuro da Saúde</span> Conosco</h1>
+        <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">Unindo ciência, tecnologia e sociedade.</p>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Caminhos para Colaborar</h2>
+    
+    <div class="collab-grid">
+        <!-- Card 1: Estudantes -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-graduation-cap"></i></span>
+                <h3>Para Estudantes</h3>
+                <p>Oportunidades de Iniciação Científica, Mestrado e Doutorado. Venha desenvolver sua pesquisa conosco.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+
+        <!-- Card 2: Parcerias -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-handshake-simple"></i></span>
+                <h3>Parcerias Institucionais</h3>
+                <p>Empresas e universidades: vamos co-criar soluções inovadoras para a saúde pública.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+
+        <!-- Card 3: Dados Abertos (Card de entrada) -->
+        <div class="collab-card">
+            <div>
+                <span class="card-icon-large"><i class="fa-solid fa-database"></i></span>
+                <h3>Dados Abertos</h3>
+                <p>Acesse nossos datasets e contribua com análises para o enfrentamento de doenças.</p>
+            </div>
+            <a href="#" class="btn-card">Saiba Mais</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Full Width Section: Dados Abertos -->
+<div class="open-science-section">
+    <div class="container">
+        <h2>Acreditamos na Ciência Aberta</h2>
+        <p>Acesse nossos repositórios públicos, colabore com códigos e ajude a expandir o conhecimento em saúde.</p>
+        <a href="#" class="btn-outline-orange">Acessar Repositórios</a>
+    </div>
+</div>

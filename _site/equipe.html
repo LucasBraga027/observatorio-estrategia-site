@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar navbar-light navbar-static">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipe.html" class="active">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+    /* Standardizing Visual Identity - Equipe Page */
+    
+    /* 1. Navbar Standardized (Orange #C65000) */
+    .navbar.navbar-light {
+        background-color: #C65000;
+    }
+
+    /* Ensure links are white on orange */
+    .navbar .nav-links li a {
+        color: #ffffff !important;
+        opacity: 1; 
+    }
+
+    /* Active Link Styling */
+    .navbar .nav-links li a.active {
+        font-weight: 700;
+        opacity: 1;
+    }
+
+    .navbar .nav-links li a:hover {
+            opacity: 1;
+    }
+
+    /* Styles for 'Colabore' button */
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        color: #ffffff !important;
+        background: transparent;
+    }
+
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: #C65000 !important;
+    }
+    
+    /* Page Layout */
+    .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px 20px 80px 20px; /* Reduced top padding to move cards up */
+    }
+
+    /* Page Title */
+    .section-title {
+        color: #C65000;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--color-text-muted);
+        font-family: "Inter", sans-serif;
+        font-size: 1.1rem;
+        margin-bottom: 80px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+
+    /* Section Styling */
+    .team-section {
+        margin-bottom: 80px;
+    }
+
+    .team-section-title {
+        color: #C65000;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px; /* Requested 28px */
+        font-weight: 700;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Grid System */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 40px; /* Requested gap */
+    }
+
+    /* Member Card Design */
+    .member-card {
+        background: transparent; /* Clean look */
+        /* border-bottom: 3px solid #C65000; removed per new 'Delphi' style request preferring cleaner look? 
+            Wait, prompt said: "Design do Card... Sombra suave no container... hover... " 
+            The prompt describes a cleaner card with shadow interaction. */
+        border-radius: 8px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Strong shadow on hover */
+        background-color: var(--color-bg-dark); /* Ensure bg matches dark on hover */
+        border: 1px solid var(--color-accent);
+    }
+
+    /* Photo Styles */
+    .member-photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px; /* Requested 8px rounded corners */
+        margin-bottom: 15px;
+        /* filter: grayscale(100%); REMOVED - Color by default */
+        transition: filter 0.4s ease; /* Requested 0.4s transition */
+    }
+
+    .member-card:hover .member-photo {
+        filter: grayscale(0%); /* Color on hover */
+    }
+
+    /* Typography */
+    .member-name {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .member-role {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px; /* Requested 14px */
+        color: var(--color-accent); /* Orange */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+
+    .member-aff {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px; /* Requested 12px */
+        color: #777; /* Light Gray */
+    }
+    
+</style>
+
+<!-- Header Standard -->
+<section class="page-header-standard">
+    <div class="container">
+        <h1>Nossa Equipe</h1>
+        <p class="subtitle">Conheça os <span class="orange-highlight">pesquisadores e especialistas</span> por trás de nossas inovações.</p>
+    </div>
+</section>
+
+<main class="team-container" style="padding-top: 0px;">
+    
+    <!-- Old Title Removed -->
+
+    
+    <section class="team-section">
+        <h2 class="team-section-title">Liderança Científica</h2>
+        <div class="team-grid">
+            
+            <div class="member-card">
+                <img src="/assets/img/Alexandra.jpg" alt="Foto de Dra. Alexandra Almeida" class="member-photo">
+                <h3 class="member-name">Dra. Alexandra Almeida</h3>
+                <p class="member-role">Coordenadora e Pesquisadora</p>
+                <p class="member-aff">PROCC / Fiocruz</p>
+                <div class="card-actions">
+                    
+                    
+                    <a href="https://www.linkedin.com/in/alexandra-almeida-66a45321/" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    
+                </div>
+            </div>
+            
+            <div class="member-card">
+                <img src="/assets/img/Francisco.gif" alt="Foto de Dr. Francisco Inácio Bastos" class="member-photo">
+                <h3 class="member-name">Dr. Francisco Inácio Bastos</h3>
+                <p class="member-role">Pesquisador Titular</p>
+                <p class="member-aff">LIS / ICICT / Fiocruz</p>
+                <div class="card-actions">
+                    
+                    <a href="https://lattes.cnpq.br/6505487564442125" class="social-btn lattes" target="_blank">LATTES</a>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="team-section">
+        <h2 class="team-section-title">Membros</h2>
+        <div class="team-grid">
+            
+            <div class="member-card">
+                <img src="/assets/img/Eurico (2).jpg" alt="Foto de Eurico Júnior" class="member-photo">
+                <h3 class="member-name">Eurico Júnior</h3>
+                <p class="member-role">Voluntário</p>
+                <p class="member-aff">Graduando da Faculdade de Economia da UFJF</p>
+                <div class="card-actions">
+                    
+                    <a href="https://lattes.cnpq.br/5865188804396124" class="social-btn lattes" target="_blank">LATTES</a>
+                    
+                    
+                    <a href="https://www.linkedin.com/in/euricojunior01/" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    
+                </div>
+            </div>
+            
+            <div class="member-card">
+                <img src="/assets/img/caeta.jpeg" alt="Foto de Caetano Villela" class="member-photo">
+                <h3 class="member-name">Caetano Villela</h3>
+                <p class="member-role">Voluntário</p>
+                <p class="member-aff">Graduando da Faculdade de Economia da UFJF</p>
+                <div class="card-actions">
+                    
+                    
+                    <a href="https://www.linkedin.com/in/caetano-villela-651541327/" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    
+                </div>
+            </div>
+            
+            <div class="member-card">
+                <img src="/assets/img/lucas.jpg" alt="Foto de Lucas Braga" class="member-photo">
+                <h3 class="member-name">Lucas Braga</h3>
+                <p class="member-role">Voluntário</p>
+                <p class="member-aff">Graduando da Faculdade de Economia da UFJF</p>
+                <div class="card-actions">
+                    
+                    
+                    <a href="https://www.linkedin.com/in/lucasbragac/" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    
+                </div>
+            </div>
+            
+            <div class="member-card">
+                <img src="/assets/img/tayene.jpeg" alt="Foto de Tayene Hellen" class="member-photo">
+                <h3 class="member-name">Tayene Hellen</h3>
+                <p class="member-role">Voluntária</p>
+                <p class="member-aff">Graduanda da Faculdade de Economia da UFJF</p>
+                <div class="card-actions">
+                    
+                    
+                    <a href="https://www.linkedin.com/in/thayene-hellen-siqueira-ba9777258" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+</main>
+
+
+    
+    
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

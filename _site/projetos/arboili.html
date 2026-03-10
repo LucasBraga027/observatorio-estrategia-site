@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arboili: Infovigilância Precoce</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar ">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+  .proj-hero { background: linear-gradient(rgba(18,18,18,0.8), rgba(18,18,18,1)), url('https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=2000') center/cover; padding: 100px 20px 50px; text-align: center; color: white; }
+  .proj-title { font-size: 3rem; font-weight: 800; color: #CB4F08; margin-bottom: 15px; }
+  .proj-subtitle { font-size: 1.2rem; font-weight: 300; max-width: 800px; margin: 0 auto; color: #ccc; }
+  .proj-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+  .proj-content h2 { color: #CB4F08; margin-top: 30px; font-size: 1.8rem; }
+  .proj-content p { font-size: 1.1rem; line-height: 1.8; color: var(--text-desc); margin-bottom: 20px; text-align: justify; }
+  .proj-sidebar { background: var(--bg-card); padding: 30px; border-radius: 10px; border: 1px solid var(--border-color); height: fit-content; box-shadow: 0 4px 15px var(--shadow-color); }
+  .proj-sidebar h3 { font-size: 1.3rem; margin-bottom: 20px; border-bottom: 2px solid #CB4F08; padding-bottom: 10px; color: var(--text-title);}
+  .proj-sidebar p { font-size: 0.95rem; margin-bottom: 15px; color: var(--text-desc); }
+  .proj-sidebar strong { color: var(--text-title); }
+  .proj-tag { display: inline-block; background: #CB4F08; color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.8rem; margin: 2px; }
+  @media (max-width: 768px) { .proj-grid { grid-template-columns: 1fr; } .proj-title { font-size: 2rem; } }
+</style>
+
+<div class="proj-hero">
+    <h1 class="proj-title">Arboili: O sistema de infovigilância precoce</h1>
+    <p class="proj-subtitle">Atrasos na notificação tradicional de arboviroses (Dengue, Chikungunya) e síndromes respiratórias (COVID-19, Influenza).</p>
+</div>
+
+<div class="proj-grid">
+    <div class="proj-content">
+        <h2>A Inovação: O Poder da Web e NLP</h2>
+        <p>Este projeto avalia dados da Web como preditores precoces. A OMS reconhece esse potencial através do sistema <em>Epidemic Intelligence from Open Sources (EIOS)</em>. O Arboili combina os dados do EIOS com as pesquisas do <strong>Google Trends</strong> (frequência de buscas por sintomas e doenças) sem o alto custo imposto por redes como o X (antigo Twitter).</p>
+        <p>A ferramenta estatística central é o <strong>Natural Language Processing (NLP)</strong>, usada para analisar dados textuais, descobrir associações entre doenças e sintomas e detectar o "desvio semântico" que pode sinalizar potenciais novas cepas ou doenças desconhecidas.</p>
+        
+        <h2>Metodologia e Impacto</h2>
+        <p>Além do NLP, o projeto emprega séries temporais, <em>wavelets</em> e <em>machine learning</em>. O resultado final será um <strong>dashboard online de acesso aberto</strong> para acompanhamento espaço-temporal no nível estadual. Esse sistema será integrado ao InfoDengue, melhorando a acurácia das análises de risco enviadas semanalmente para a Secretaria de Vigilância em Saúde.</p>
+    </div>
+    
+    <div class="proj-sidebar">
+        <h3>Ficha Técnica</h3>
+        <p><strong>Coordenação Geral:</strong> Cláudia Codeço</p>
+        <p><strong>Coordenação Adjunta:</strong> Alexandra Almeida</p>
+        <p><strong>Tecnologias:</strong></p>
+        <div>
+            <span class="proj-tag">NLP</span>
+            <span class="proj-tag">Machine Learning</span>
+            <span class="proj-tag">Séries Temporais</span>
+            <span class="proj-tag">Big Data</span>
+        </div>
+        <br>
+        <p><strong>Status:</strong> Em Desenvolvimento</p>
+    </div>
+</div>
+
+
+    
+    
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicações</title>
+    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+    <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
+    <style>
+        /* Ensure Index Navigation matches others exactly in size/border */
+        .navbar .nav-links .nav-btn {
+            border: 2px solid #ffffff !important; /* Thick border like others */
+            padding: 8px 20px; /* Ensure size match */
+            font-weight: 600;
+        }
+        
+        .navbar .container {
+             padding: 10px 20px; /* Standardize vertical padding */
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <script>
+        // Observatório da Estratégia uses a fixed dark theme.
+        (function() {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        })();
+    </script>
+
+    <nav class="navbar navbar-light navbar-static">
+    <div class="container nav-container">
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/publicacoes.html" class="active">Publicações</a></li>
+            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
+                <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <style>
+    /* Styles specific to Publicacoes page */
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-desc);
+    }
+    
+    /* Override navbar color for this page */
+    .navbar.navbar-light {
+        background-color: var(--color-accent);
+    }
+
+    /* Styles for 'Colabore' button - Consistent with other pages */
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        color: #ffffff !important;
+        background: transparent;
+    }
+
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: var(--color-accent) !important;
+    }
+
+    .publications-section {
+        margin-top: 70px; /* Navbar height */
+        padding: 60px 0 100px 0;
+        background-color: var(--bg-body);
+    }
+
+    /* Header Style 'Clean' */
+    .pub-header {
+        margin-bottom: 50px;
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    .pub-header h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3rem; /* Increased from 2.5rem */
+        font-weight: 700;
+        color: var(--color-accent); /* Laranja da marca solicitado */
+        margin-bottom: 0px; 
+        letter-spacing: -1px; /* Tighter letter-spacing for larger size */
+        flex-shrink: 0;
+    }
+
+    .pub-header p {
+        font-family: "Inter", sans-serif;
+        font-size: 1.25rem; /* Increased from 1.1rem */
+        color: var(--text-desc);
+        max-width: none;
+        margin: 0;
+        font-weight: 400;
+    }
+
+    /* Tabs/Filters */
+    .pub-filters {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0px;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        background: none;
+        border: none;
+        font-family: "Inter", sans-serif;
+        font-size: 1.15rem; /* Increased from 1rem */
+        font-weight: 500;
+        color: var(--text-desc);
+        cursor: pointer;
+        padding: 12px 24px; /* Increased from 8px 16px */
+        border-radius: 30px; /* Slightly larger radius */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .filter-btn:hover {
+        color: var(--color-accent);
+        background-color: rgba(198, 80, 0, 0.05);
+        transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+        color: #fff;
+        background-color: var(--color-accent);
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(198, 80, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    /* Search Bar Styles */
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        position: relative;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 15px 25px;
+        padding-right: 50px; /* Space for icon */
+        border: 2px solid var(--border-color);
+        border-radius: 50px;
+        font-family: "Inter", sans-serif;
+        font-size: 1.1rem;
+        outline: none;
+        transition: all 0.3s ease;
+        background-color: var(--bg-card);
+        color: var(--text-title);
+        text-align: center;
+    }
+
+    .search-input:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 4px 15px rgba(198, 80, 0, 0.15);
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        pointer-events: none;
+    }
+
+    .search-input:focus + .search-icon {
+        color: var(--color-accent);
+    }
+
+    /* Item Animation */
+    .pub-item {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.4s ease;
+    }
+
+    .pub-item.hidden {
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .pub-item:not(.hidden) {
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    /* Publication List - Carnegie Mellon / Google Scholar Style */
+    .pub-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pub-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 35px 25px; /* Increased padding */
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.2s ease;
+        text-decoration: none; /* In case the whole row is clickable, but we have a button too */
+    }
+
+    .pub-item:hover {
+        background-color: var(--color-bg-dark); /* Restore light gray hover for Light Mode */
+    }
+    
+    /* Reveal hover effect in Dark Mode specifically */
+    body.dark-mode .pub-item:hover {
+        background-color: #1e1e1e; /* Explicit highlight for dark mode */
+    }
+
+    /* Column 1: Year */
+    .pub-year {
+        flex: 0 0 100px; /* Wider column */
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem; /* Larger font */
+        color: #999;
+        font-weight: 400;
+        padding-top: 5px; /* Visual alignment with title */
+    }
+
+    /* Column 2: Image */
+    .pub-image {
+        flex: 0 0 140px; /* Wider */
+        padding-right: 25px;
+    }
+
+    .pub-thumbnail {
+        width: 110px; /* Larger */
+        height: 152px; /* Larger (~1.4 ratio) */
+        object-fit: cover;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-card);
+        box-shadow: 0 2px 4px var(--shadow-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #ccc;
+    }
+    
+    .pub-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Column 3: Details */
+    .pub-details {
+        flex: 1;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .pub-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.35rem; /* ~22px */
+        color: var(--text-title);
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        transition: color 0.2s;
+    }
+
+    .pub-item:hover .pub-title {
+        color: var(--color-accent);
+    }
+
+    .pub-authors {
+        font-family: "Inter", sans-serif;
+        font-size: 1.05rem; /* Larger font */
+        color: var(--text-desc);
+        font-style: italic;
+        margin-bottom: 8px;
+    }
+
+    .pub-venue {
+        display: inline-block;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem; /* Larger font */
+        color: var(--color-accent);
+        font-weight: 600;
+    }
+    
+    .pub-type-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        background-color: #eee;
+        color: #555;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+    
+    /* Dark Mode Tag Override */
+    body.dark-mode .pub-type-tag {
+        background-color: #333;
+        color: #ccc;
+    }
+
+    /* Column 4: Action */
+    .pub-action {
+        flex: 0 0 140px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        align-self: center;
+    }
+
+    .btn-read {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem; /* Larger font */
+        font-weight: 700;
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .btn-read:hover {
+        transform: translateX(5px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .pub-item {
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .pub-year {
+            width: 100%;
+            flex: none;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .pub-image {
+            display: none; /* Hide image on mobile for compactness if needed, or keep smaller */
+        }
+
+        .pub-details {
+            flex: 1 1 100%;
+            padding-right: 0;
+        }
+        
+        .pub-action {
+            margin-top: 15px;
+            flex: 1 1 100%;
+            justify-content: flex-start;
+        }
+    }
+</style>
+
+<!-- Header Standard -->
+<section class="page-header-standard">
+    <div class="container">
+        <h1>Publicações</h1>
+        <p class="subtitle">Explore nossa <span class="orange-highlight">produção científica recente</span>, incluindo artigos revisados por pares, preprints e relatórios técnicos.</p>
+    </div>
+</section>
+
+<!-- Publicações Section (Content) -->
+<section class="publications-section" style="padding-top: 0; margin-top: 0;">
+    <div class="container">
+        
+        <!-- Headers Removed -->
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Pesquisar por título, autor ou tema...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <!-- Filters -->
+        <div class="pub-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="artigos">Artigos</button>
+            <button class="filter-btn" data-filter="preprints">Preprints</button>
+            <button class="filter-btn" data-filter="relatorios">Relatórios</button>
+        </div>
+
+        <!-- List -->
+        <div class="pub-list">
+            
+            
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2026</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=25" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Epidemiological and digital syndromic surveillance data on dengue, chikungunya, and SARI in Brazil</div>
+                    <div class="pub-authors">ME Borges, CT Codeço, D Machado, A Almeida</div>
+                    <div class="pub-venue">
+                        Scientific Data 13 (1)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.nature.com/articles/s41597-025-06155-6" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2026</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=52" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Implementation of Web-Based Respondent-Driven Sampling to Recruit Users of Electronic Nicotine Delivery Systems in Brazil: Cross-Sectional Survey</div>
+                    <div class="pub-authors">N Bertoni, AS Szklo, FI Bastos</div>
+                    <div class="pub-venue">
+                        JMIR Formative Research 10
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://formative.jmir.org/2026/1/e81573" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=95" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Armed violence and shootouts in Rio de Janeiro: relevance to impoverished communities and primary care health services</div>
+                    <div class="pub-authors">JC Mota, AP Cunha, FI Bastos</div>
+                    <div class="pub-venue">
+                        Ciência & Saúde Coletiva 30
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csc/2025.v30n10/e12982025/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=73" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Medication Experiences in the Treatment for Opioid Use Disorder: Insights From Reddit</div>
+                    <div class="pub-authors">A Borquez, M Conway, D Grelotti, A Gupta, S Strathdee, A Almeida</div>
+                    <div class="pub-venue">
+                        Drug and Alcohol Dependence 267
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://elibrary.ru/item.asp?id=81299046" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=44" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Potential Substance Use Disorder Epidemics Related to Prescription-Drugs in the United States: Development, Validation and Application of a Risk Assessment Approach</div>
+                    <div class="pub-authors">M Funk, T Patton, CH Shrader, D Abramovitz, A Almeida, R Goyal, B Han, ...</div>
+                    <div class="pub-venue">
+                        Drug and Alcohol Dependence 267
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://elibrary.ru/item.asp?id=82061093" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=93" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Medication experiences in the treatment of opioid use disorders: Insights from Reddit</div>
+                    <div class="pub-authors">A Almeida, M Conway, DJ Grelotti, A Gupta, D Frank, A Bórquez</div>
+                    <div class="pub-venue">
+                        Addiction 120 (8)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/add.70022" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=56" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Harm reduction services and interventions for People Who Use Drugs (PWUD) in Latin America and the Caribbean (LAC) between 2013–2024: A scoping review protocol</div>
+                    <div class="pub-authors">I Bórquez, K Bailey, G Laynor, L Toledo, FI Bastos, J Santaella-Tenorio, ...</div>
+                    <div class="pub-venue">
+                        PLoS One 20 (11)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=pt-BR&user=dzP4uYEAAAAJ&pagesize=100&sortby=pubdate&citation_for_view=dzP4uYEAAAAJ:e-nnqdki048C" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=99" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Prevalence of transfusion-transmissible infections in blood donors from Piaui State, Northeastern Brazil</div>
+                    <div class="pub-authors">JP da Silva-Sampaio, RB Sinimbu, AF de Oliveira Neto, ...</div>
+                    <div class="pub-venue">
+                        Journal of Infection and Public Health
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.sciencedirect.com/science/article/pii/S1876034125003375" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=83" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Associations between Gender Discrimination, Resilience and Social Support with Self-Harm and Suicidality among Transgender Women in Brazil.</div>
+                    <div class="pub-authors">S Sperandei, FI Bastos, C Lyra, S Munasinghe, A Page, A Reis</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Psiquiatria (Sao Paulo
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://europepmc.org/article/med/40886333" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=9" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">A time-series analysis of the use of opioid medications in a network of Brazilian hospitals, 2009–2020</div>
+                    <div class="pub-authors">RM Carvalho, FI Bastos, MC de Magalhães-Barbosa, LM Bianchi, ...</div>
+                    <div class="pub-venue">
+                        The Lancet Regional Health–Americas 48
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.thelancet.com/journals/lanam/article/PIIS2667-193X(25)00177-2/fulltext" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=76" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Patterns of drug combinations used by men who have sex with men in Brazil</div>
+                    <div class="pub-authors">R Nikobin, J Mella-Cobas, MA Veras, FI Bastos, JC Barbarà, VS Ávila, ...</div>
+                    <div class="pub-venue">
+                        Brazilian Journal of Psychiatry 47
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielo.br/j/rbp/a/h89V9JCrGxy8vPJWFb9tXLb/?lang=en" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=7" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Hiv Infection and Aids Among Drug Injectors at Rio De Janeiro</div>
+                    <div class="pub-authors">ES Lima, FI Bastos, PR Telles, SR Friedman</div>
+                    <div class="pub-venue">
+                        < bound method Organization. get_name_with_acronym of< Organization: The …
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=8595361199558206514&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2025</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=41" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Violencia armada y tiroteos en Río de Janeiro: relevancia para comunidades empobrecidas y los servicios de atención primaria de salud</div>
+                    <div class="pub-authors">JC Mota, AP Cunha, FI Bastos</div>
+                    <div class="pub-venue">
+                        Ciência & Saúde Coletiva 30
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielo.br/j/csc/a/pVZwxqFSkWkpsn8RJGqJbcc/abstract/?lang=es" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=98" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Alcohol use disorder in people with infectious and chronic diseases and mental disorders: Brazil, 2015</div>
+                    <div class="pub-authors">M Salles, FI Bastos, GLA Costa, JC Mota, RBD Boni</div>
+                    <div class="pub-venue">
+                        Ciência & Saúde Coletiva 29
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csc/2024.v29n9/e01122023/en/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=74" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Hepatitis A, B, and C in Brazilian Afro-Descendant Communities from Northeast Brazil: A Seroepidemiological Survey</div>
+                    <div class="pub-authors">BV Lago, AB Cardoso, GP Nascimento, E Pereira, RA Oliveira, ...</div>
+                    <div class="pub-venue">
+                        Viruses 16 (11)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.mdpi.com/1999-4915/16/11/1652" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=17" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Barriers and facilitators for HIV rapid testing among transgender women and gay and other men who have sex with men in Brazil: A scoping review</div>
+                    <div class="pub-authors">LSG Toledo, P Palmieri, GR Ribeiro, A Silva, FI Bastos</div>
+                    <div class="pub-venue">
+                        Global Public Health 19 (1)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.tandfonline.com/doi/abs/10.1080/17441692.2024.2360982" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=94" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Transtornos relacionados ao uso de álcool entre pessoas com doenças infecciosas, crônicas e mentais: Brasil, 2015</div>
+                    <div class="pub-authors">M Salles, FI Bastos, GLA Costa, JC Mota, RBD Boni</div>
+                    <div class="pub-venue">
+                        Ciência & saúde coletiva 29
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csc/2024.v29n9/e01122023/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=14" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Sexually transmitted infections and other health issues among transgender women and travestis in Brazil: epidemiological profile, vulnerabilities, access to services and care</div>
+                    <div class="pub-authors">MASM Veras, I Dourado, FI Bastos, TF Pinheiro</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240001.supl.1/en/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=35" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Infecções sexualmente transmissíveis e outras questões de saúde de mulheres trans e travestis no Brasil: perfil epidemiológico, vulnerabilidades, acesso a serviços e cuidado</div>
+                    <div class="pub-authors">MASM Veras, I Dourado, FI Bastos, TF Pinheiro</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240001.supl.1/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=88" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Estudo TransOdara: o desafio de integrar métodos, contextos e procedimentos durante a pandemia de COVID-19 no Brasil</div>
+                    <div class="pub-authors">MASM Veras, TF Pinheiro, L Galan, L Magno, AF Leal, DR Knauth, ...</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240002.supl.1/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=12" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">TransOdara study: The challenge of integrating methods, settings and procedures during the COVID-19 pandemic in Brazil</div>
+                    <div class="pub-authors">MASM Veras, TF Pinheiro, L Galan, L Magno, AF Leal, DR Knauth, ...</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240002.supl.1/en/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=70" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Multiple substance use and associated factors in transgender women and travestis: findings from the TransOdara Study, Brazil</div>
+                    <div class="pub-authors">JC da Mota, S Sperandei, RB De Boni, I Dourado, MASM Veras, FI Bastos</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240011.supl.1/en/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=47" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Mapping projects for expanding rapid HIV testing in key populations, Brazil, 2004-2021</div>
+                    <div class="pub-authors">LSG Toledo, AIS Almeida, FI Bastos</div>
+                    <div class="pub-venue">
+                        Cadernos de Saúde Pública 40
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csp/2024.v40n4/e00182323/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=3" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Uso de múltiplas substâncias e fatores associados em mulheres trans e travestis: resultados do estudo TransOdara, Brasil</div>
+                    <div class="pub-authors">JC da Mota, S Sperandei, RB De Boni, I Dourado, MASM Veras, FI Bastos</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240011.supl.1/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=80" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Prevalence of HIV infection among transgender women and travestis in Brazil: data from the TransOdara study</div>
+                    <div class="pub-authors">I Dourado, L Magno, BO Leite, FI Bastos, JC Mota, MASM Veras, ...</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240004.supl.1/en/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=73" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Prevalência de infecção pelo vírus da imunodeficiência humana (HIV) em mulheres trans e travestis no Brasil: dados do estudo TransOdara</div>
+                    <div class="pub-authors">I Dourado, L Magno, BO Leite, FI Bastos, JC Mota, MASM Veras, ...</div>
+                    <div class="pub-venue">
+                        Revista Brasileira de Epidemiologia 27
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/rbepid/2024.v27suppl1/e240004.supl.1/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=6" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Assessing the Safety, User Acceptability, Dissemination, and Reach of a Comprehensive Web-Based Resource on Medications for Opioid Use Disorder (MOUD Hub): Protocol for a …</div>
+                    <div class="pub-authors">MJ Nicholls, A Almeida, J Castello, D Grelotti, B Daugherty, D Gann Jr, ...</div>
+                    <div class="pub-venue">
+                        JMIR Research Protocols 13 (1)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.researchprotocols.org/2024/1/e57065/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=68" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Availability of mental health care and mental health disorders in Brazil</div>
+                    <div class="pub-authors">RB De Boni, JC da Mota, JC Alves, RAD de Oliveira, DP Baldez, ...</div>
+                    <div class="pub-venue">
+                        Google Scholar
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.researchsquare.com/article/rs-4395839/latest" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=29" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">The use of natural language processing methods in reddit to investigate opioid use: scoping review</div>
+                    <div class="pub-authors">A Almeida, T Patton, M Conway, A Gupta, SA Strathdee, A Bórquez</div>
+                    <div class="pub-venue">
+                        JMIR infodemiology 4
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://infodemiology.jmir.org/2024/1/e51156" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=62" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">A ressurgência da criminalização do uso de drogas: dinâmica e perspectivas</div>
+                    <div class="pub-authors">FI Bastos</div>
+                    <div class="pub-venue">
+                        Cadernos de Saúde Pública 40
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csp/2024.v40n7/e00081624/pt/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=93" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">(Re) criminalization of drug use: dynamics and perspectives</div>
+                    <div class="pub-authors">FI Bastos</div>
+                    <div class="pub-venue">
+                        Cadernos de Saúde Pública 40
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielosp.org/article/csp/2024.v40n7/e00081624/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="preprints">
+                <div class="pub-year">2024</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=74" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">THE “MOUD HUB,” A COMPREHENSIVE ONLINE RESOURCE ON MEDICATIONS FOR OPIOID USE DISORDER: PROTOCOL FOR A FEASIBILITY STUDY ASSESSING USER ACCEPTABILITY AND REACH (PREPRINT)</div>
+                    <div class="pub-authors">M NICHOLLS, A ALMEIDA, JU CASTELLO, D GRELOTTI, B DOHERTY, ...</div>
+                    <div class="pub-venue">
+                        JMIR
+                        
+                        <span class="pub-type-tag">Preprint</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://elibrary.ru/item.asp?id=74375794" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2023</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=62" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">A Psychometric Evaluation and a Framework Test of the HIV Stigma Mechanisms Scale Among a Population-Based Sample of Men and Women Living with HIV in Central Uganda</div>
+                    <div class="pub-authors">A Almeida, ...</div>
+                    <div class="pub-venue">
+                        AIDS Behavior
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://link.springer.com/article/10.1007/s10461-023-04026-y" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2019</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=6" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Correction to: Seasonal dynamics of influenza in Brazil: the latitude effect</div>
+                    <div class="pub-authors">A Almeida, C Codeço, PM Luz</div>
+                    <div class="pub-venue">
+                        BMC Infectious Diseases 19
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6399819/" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2018</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=77" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Seasonal dynamics of influenza in Brazil: the latitude effect</div>
+                    <div class="pub-authors">A Almeida, C Codeço, PM Luz</div>
+                    <div class="pub-venue">
+                        BMC infectious diseases 18 (1)
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://link.springer.com/article/10.1186/s12879-018-3484-z" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2018</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=6" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Dinâmica sazonal da influenza no Brasil: a importância da latitude e do clima</div>
+                    <div class="pub-authors">ARM Almeida</div>
+                    <div class="pub-venue">
+                        Rio de Janeiro: Escola Nacional de Saúde Pública Sergio Arouca (ENSP …
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=10853492695247864641&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2014</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=74" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Trabalho técnico não-formal em saúde no Brasil: Inferências a partir da comparação RAIS-PNAD 2009</div>
+                    <div class="pub-authors">A Almeida, M Candeias, M Vieira, AM Campello, A Moreno, F Chinelli, ...</div>
+                    <div class="pub-venue">
+                        11º Congresso Internacional da Rede Unida
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="http://conferencias.redeunida.org.br/ocs/index.php/redeunida/RU11/paper/view/1062" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2014</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=99" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">TRABALHADORES TÉCNICOS DE SAÚDE E SUAS TRAJETÓRIAS PROFISSIONAIS NO BRASIL</div>
+                    <div class="pub-authors">F Chinelli, AM Campello, F Lobo, A Moreno, A Almeida, M Candeias, ...</div>
+                    <div class="pub-venue">
+                        11º Congresso Internacional da Rede Unida
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="http://conferencias.redeunida.org.br/ocs/index.php/redeunida/RU11/paper/view/1709/0" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2013</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=56" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Dinâmica da formação técnica e da ocupação de postos de trabalho em saúde: Brasil anos 2000</div>
+                    <div class="pub-authors">M VIEIRA, ARM Almeida, A Campello, AB Moreno, F Chinelli, ...</div>
+                    <div class="pub-venue">
+                        Morosini MVGC
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=15928747327051699688&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2011</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=60" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Trabalhadores da saúde: diferenças de escolaridade entre o setor público e o privado. Um estudo a partir da PNAD–2005</div>
+                    <div class="pub-authors">AB Moreno, A Almeida, L Costa, CR Pierantoni, MR Dal Poz, T França</div>
+                    <div class="pub-venue">
+                        Pierantoni CR
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=18274127049629636004&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2009</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=95" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">O ensino como negócio: a expansão da oferta dos cursos de formação de tecnólogos em saúde no Brasil</div>
+                    <div class="pub-authors">AM Campello, A Almeida, L Costa, M Candeias, MD Seta, M Farah Neto, ...</div>
+                    <div class="pub-venue">
+                        Trabalho
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielo.br/j/tes/a/GWrQ7bHkmWWVxGsB6B4K7Fx/?lang=pt" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2009</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=45" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Inequalities in Technical Brazilian Health Workforce</div>
+                    <div class="pub-authors">A Almeida, A Moreno, M Candeias, M Vieira</div>
+                    <div class="pub-venue">
+                        Google Scholar
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://2009.isiproceedings.org/A5%20Docs/1038.pdf" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2009</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=90" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Teaching as business: the growth in the offering of health technologists' education courses in Brazil</div>
+                    <div class="pub-authors">AM Campello, A Almeida, L Costa, M Candeias, MD Seta, M Farah Neto, ...</div>
+                    <div class="pub-venue">
+                        Trabalho
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.scielo.br/j/tes/a/GWrQ7bHkmWWVxGsB6B4K7Fx/abstract/?lang=en&format=html&stop=next" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year">2007</div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=79" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">Análise de estilo robusta</div>
+                    <div class="pub-authors">AR ALMEIDA, BV MENDES, M NAZARETH</div>
+                    <div class="pub-venue">
+                        Encontro Brasileiro de Finanças 7
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=5134869852535276912&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year"></div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=48" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">O público e o privado na formação de tecnólogos em saúde</div>
+                    <div class="pub-authors">AM Campello, A Almeida, FJSL Neto, L Leite, M Candeias, M De Setta, ...</div>
+                    <div class="pub-venue">
+                        Google Scholar
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://scholar.google.com/scholar?cluster=7778660148773336574&hl=en&oi=scholarr" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+            <div class="pub-item" data-category="artigos">
+                <div class="pub-year"></div>
+                <div class="pub-image">
+                    <div class="pub-thumbnail">
+                        <img src="https://picsum.photos/80/110?random=41" alt="Cover">
+                    </div>
+                </div>
+                <div class="pub-details">
+                    <div class="pub-title">agentes comunitários de saúde–Brasil</div>
+                    <div class="pub-authors">F Chinelli, M Vieira, AM Campello, F Lobro, A Moreno, A Almeida, ...</div>
+                    <div class="pub-venue">
+                        Formação Profissional
+                        
+                        <span class="pub-type-tag">Artigo</span>
+                        
+                    </div>
+                </div>
+                <div class="pub-action">
+                    <a href="https://www.academia.edu/download/32882882/AFIRSEActas2013.pdf#page=1352" class="btn-read">Ler Artigo</a>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <!-- Load More (Optional visually) -->
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="#" class="btn" style="border: 1px solid #ddd; color: #666; font-size: 0.85rem;">Carregar mais publicações</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="/assets/js/main.js"></script>
+<script>
+    // Interactive Search & Filter Logic
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const pubItems = document.querySelectorAll('.pub-item');
+        const searchInput = document.getElementById('searchInput');
+
+        let currentFilter = 'all';
+
+        function filterPublications() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            pubItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const title = item.querySelector('.pub-title').textContent.toLowerCase();
+                const authors = item.querySelector('.pub-authors').textContent.toLowerCase();
+                // Optional: Search in venue too if desired
+                // const venue = item.querySelector('.pub-venue').textContent.toLowerCase();
+
+                const matchesFilter = (currentFilter === 'all' || category === currentFilter);
+                const matchesSearch = (title.includes(searchTerm) || authors.includes(searchTerm));
+
+                // Reset animation
+                item.style.animation = 'none';
+                item.offsetHeight; /* trigger reflow */
+                item.style.animation = null;
+
+                if (matchesFilter && matchesSearch) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // Filter Button Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update Active State
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update Current Filter
+                currentFilter = btn.getAttribute('data-filter');
+                
+                // Trigger Filter
+                filterPublications();
+            });
+        });
+
+        // Search Input Logic
+        searchInput.addEventListener('input', filterPublications);
+    });
+</script>
+
+
+    
+    
+<style>
+    .social-bar-container {
+        background-color: #333333;
+        color: white;
+        padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
+        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        margin-top: auto; /* Garante que fique no fundo se usar flex no body */
+        width: 100%;
+    }
+    
+    .social-bar-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* Para mobile */
+        width: 100%;
+        max-width: 100%; /* Full width para alinhar com a navbar */
+        padding: 0 20px; /* Mesmo padding lateral da navbar */
+        margin: 0 auto;
+    }
+    .social-links {
+        display: flex;
+        align-items: center;
+        gap: 25px; /* Aumentado gap */
+    }
+    .social-text {
+        font-family: 'Montserrat', sans-serif; /* Fonte igual "DASHBOARDS" */
+        font-weight: 500; /* Regular/Medium para ficar igual */
+        text-transform: uppercase;
+        letter-spacing: 2px; /* Espaçamento levemente maior */
+        font-size: 1rem;
+        margin-right: 15px;
+    }
+    .social-icon {
+        color: white;
+        font-size: 1.6rem; /* Aumentado ícones para ficarem mais visíveis */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover {
+        color: #CB4F08; /* Laranja Fiocruz no hover */
+        transform: translateY(-3px);
+    }
+    .footer-logo img {
+        height: 65px; /* Aumentado logo novamente */
+        filter: brightness(0) invert(1); /* Torna o logo branco automaticamente */
+        opacity: 1; /* Opacidade total para melhor visibilidade */
+        display: block;
+    }
+</style>
+
+<div class="social-bar-container">
+    <div class="social-bar-content">
+        <!-- Esquerda: Texto 'Siga-nos' + Ícones Sociais -->
+        <div class="social-links">
+            <span class="social-text">Siga-nos</span>
+            <!-- Icons -->
+            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Direita: Logo Institucional -->
+        <div class="footer-logo">
+            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+        </div>
+    </div>
+</div>
+
+    
+
+    <script src="/assets/js/main.js"></script>
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en,pt', // Limitado a Inglês e Português para o Toggle
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

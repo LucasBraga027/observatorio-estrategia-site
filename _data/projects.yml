@@ -1,0 +1,29 @@
+- id: arboili
+  title: "Arboili: Infovigilância Precoce"
+  description: "Sistema de alerta para emergências em saúde pública (arboviroses e síndromes respiratórias) utilizando Natural Language Processing (NLP) e dados da Web como Google Trends."
+  tags:
+    - NLP
+    - EPIDEMIOLOGIA
+    - BIG DATA
+  image: "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?q=80&w=800&auto=format&fit=crop"
+  url: "/projetos/arboili.html"
+
+- id: cenas-drogas
+  title: "IA e Citizen Science em Cenas de Uso"
+  description: "Uso do Google Street View, Inteligência Artificial e Ciência Cidadã para mapear e caracterizar o risco sindêmico (crack/HIV/HCV) e vulnerabilidades no Rio de Janeiro."
+  tags:
+    - INTELIGÊNCIA ARTIFICIAL
+    - CITIZEN SCIENCE
+    - GEOLOCALIZAÇÃO
+  image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800&auto=format&fit=crop"
+  url: "/projetos/cenas-drogas.html"
+
+- id: meninas-exatas
+  title: "Meninas nas Ciências Exatas"
+  description: "Intervenção educacional interdisciplinar para combater desigualdades de gênero, motivando e retendo meninas e mulheres do ensino médio e graduação nas áreas ETEC/STEM."
+  tags:
+    - EDUCAÇÃO
+    - EQUIDADE
+    - INTERDISCIPLINARIDADE
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=800&auto=format&fit=crop"
+  url: "/projetos/meninas-exatas.html"

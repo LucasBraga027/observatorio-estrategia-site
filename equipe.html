@@ -1,0 +1,194 @@
+---
+layout: default
+title: Equipe
+permalink: /equipe.html
+navbar_class: navbar-light navbar-static
+---
+<style>
+    /* Standardizing Visual Identity - Equipe Page */
+    
+    /* 1. Navbar Standardized (Orange #C65000) */
+    .navbar.navbar-light {
+        background-color: #C65000;
+    }
+
+    /* Ensure links are white on orange */
+    .navbar .nav-links li a {
+        color: #ffffff !important;
+        opacity: 1; 
+    }
+
+    /* Active Link Styling */
+    .navbar .nav-links li a.active {
+        font-weight: 700;
+        opacity: 1;
+    }
+
+    .navbar .nav-links li a:hover {
+            opacity: 1;
+    }
+
+    /* Styles for 'Colabore' button */
+    .navbar .nav-links .nav-btn {
+        border: 2px solid #ffffff !important;
+        color: #ffffff !important;
+        background: transparent;
+    }
+
+    .navbar .nav-links .nav-btn:hover {
+        background-color: #ffffff;
+        color: #C65000 !important;
+    }
+    
+    /* Page Layout */
+    .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px 20px 80px 20px; /* Reduced top padding to move cards up */
+    }
+
+    /* Page Title */
+    .section-title {
+        color: #C65000;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--color-text-muted);
+        font-family: "Inter", sans-serif;
+        font-size: 1.1rem;
+        margin-bottom: 80px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+
+    /* Section Styling */
+    .team-section {
+        margin-bottom: 80px;
+    }
+
+    .team-section-title {
+        color: #C65000;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 28px; /* Requested 28px */
+        font-weight: 700;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Grid System */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 40px; /* Requested gap */
+    }
+
+    /* Member Card Design */
+    .member-card {
+        background: transparent; /* Clean look */
+        /* border-bottom: 3px solid #C65000; removed per new 'Delphi' style request preferring cleaner look? 
+            Wait, prompt said: "Design do Card... Sombra suave no container... hover... " 
+            The prompt describes a cleaner card with shadow interaction. */
+        border-radius: 8px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Strong shadow on hover */
+        background-color: var(--color-bg-dark); /* Ensure bg matches dark on hover */
+        border: 1px solid var(--color-accent);
+    }
+
+    /* Photo Styles */
+    .member-photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px; /* Requested 8px rounded corners */
+        margin-bottom: 15px;
+        /* filter: grayscale(100%); REMOVED - Color by default */
+        transition: filter 0.4s ease; /* Requested 0.4s transition */
+    }
+
+    .member-card:hover .member-photo {
+        filter: grayscale(0%); /* Color on hover */
+    }
+
+    /* Typography */
+    .member-name {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .member-role {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px; /* Requested 14px */
+        color: var(--color-accent); /* Orange */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+
+    .member-aff {
+        font-family: 'Inter', sans-serif;
+        font-size: 12px; /* Requested 12px */
+        color: #777; /* Light Gray */
+    }
+    
+</style>
+
+<!-- Header Standard -->
+<section class="page-header-standard">
+    <div class="container">
+        <h1>Nossa Equipe</h1>
+        <p class="subtitle">Conheça os <span class="orange-highlight">pesquisadores e especialistas</span> por trás de nossas inovações.</p>
+    </div>
+</section>
+
+<main class="team-container" style="padding-top: 0px;">
+    
+    <!-- Old Title Removed -->
+
+    {% for category in site.data.team %}
+    <section class="team-section">
+        <h2 class="team-section-title">{{ category.category }}</h2>
+        <div class="team-grid">
+            {% for member in category.members %}
+            <div class="member-card">
+                <img src="{{ member.image }}" alt="Foto de {{ member.name }}" class="member-photo">
+                <h3 class="member-name">{{ member.name }}</h3>
+                <p class="member-role">{{ member.role }}</p>
+                <p class="member-aff">{{ member.institution }}</p>
+                <div class="card-actions">
+                    {% if member.lattes and member.lattes != "" %}
+                    <a href="{{ member.lattes }}" class="social-btn lattes" target="_blank">LATTES</a>
+                    {% endif %}
+                    {% if member.linkedin and member.linkedin != "" %}
+                    <a href="{{ member.linkedin }}" class="social-btn linkedin" target="_blank">LINKEDIN</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+
+</main>
