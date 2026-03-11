@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre</title>
-    <meta name="description" content="Fiocruz - Instituição nacional de pesquisa e desenvolvimento em ciências biológicas.">
+    <meta name="description" content="Observatório da Estratégia - Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros da Universidade Federal de Juiz de Fora.">
     <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,31 +64,19 @@
     <style>
     /* 1. Navbar Dynamic (Transparent -> Orange) */
     .navbar {
-        background-color: transparent !important; /* Start Transparent on Photo */
+        background-color: transparent !important;
         transition: background-color 0.3s ease-in-out;
     }
-
-    /* State when scrolled (added by main.js) */
     .navbar.scrolled {
-        background-color: #C65000 !important; /* Turns Orange on Scroll */
+        background-color: var(--color-accent) !important;
     }
-
-    .navbar .nav-links a {
-        color: #ffffff !important;
-    }
-    .navbar .nav-links a.active, 
-    .navbar .nav-links a:hover {
-        font-weight: 700;
-    }
-
-    /* FIX: Match Index Style */
+    .navbar .nav-links a { color: #ffffff !important; }
+    .navbar .nav-links a.active, .navbar .nav-links a:hover { font-weight: 700; }
     .navbar .nav-links .nav-btn {
         border: 2px solid #ffffff !important;
         padding: 8px 20px;
         font-weight: 600;
     }
-
-    /* Fix visibility on hover (Black text on White bg, consistent with Index) */
     .navbar .nav-links .nav-btn:hover {
         background-color: #ffffff;
         color: #000000 !important;
@@ -96,81 +84,133 @@
 
     /* 2. Typography Standard */
     .about-title {
-        color: #C65000 !important;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 2.5rem; /* Large and robust */
-        font-weight: 800;
+        color: var(--color-accent) !important;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 3rem; 
+        font-weight: 900;
+        text-transform: lowercase;
         margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
-    /* Body background governed by main.css */
+    .block-badge {
+        background-color: var(--color-accent);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
 
     /* 3. Magic Bar Interaction */
     .about-text-content {
         position: relative;
         padding-bottom: 20px;
+        margin-bottom: 50px;
     }
-    
     .about-text-content::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 0%; /* Hidden start */
-        height: 5px; /* Thick bar */
-        background-color: #C65000;
+        width: 0%; 
+        height: 5px; 
+        background-color: var(--color-accent);
         transition: width 0.4s ease-in-out;
     }
-
-    .about-text-content:hover::after {
-        width: 100%; /* Expand to full width */
-    }
+    .about-text-content:hover::after { width: 100%; }
 
     /* 4. Text Content */
     .about-text {
-        color: #333;
-        line-height: 1.8 !important; /* Elegant spacing */
+        color: var(--color-text-light);
+        line-height: 1.8 !important;
         font-size: 1.1rem;
+    }
+    
+    .social-handle {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        margin-top: 15px;
+        display: block;
+    }
+    
+    .about-logos {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        align-items: center;
+        color: var(--color-text-muted);
+        font-weight: bold;
+        font-size: 1.2rem;
     }
 </style>
 
-<!-- Page Hero (Banner de Topo) -->
-<!-- Imagem definida inline conforme solicitado pelo usuário -->
-<!-- Page Hero (Banner de Topo) -->
-<section class="page-hero">
+<!-- Bloco 4: Apresentação Geral (Hero) -->
+<section class="page-hero" style="display:flex; align-items:center; justify-content:center; text-align:center;">
     <img src="/assets/img/2c00891bc1b29b047472a41caa6ca8dccb8fd090.jpg" class="hero-bg" alt="Banner Sobre" fetchpriority="high">
+    <div style="position:relative; z-index:2; padding: 0 20px;">
+        <h1 class="hero-title" style="margin-bottom:5px;">Observatório da Estratégia</h1>
+        <h2 class="hero-subtitle" style="margin-bottom:20px;">Estratégia, Cultura, Tecnologia & Futuros</h2>
+        <p class="hero-subtitle" style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            Conhecimento acadêmico que contribui para a <span class="orange-highlight">melhoria do ambiente de gestão de organizações</span> públicas e privadas.
+        </p>
+    </div>
 </section>
 
-<!-- Seção Principal: O que fazemos -->
 <section class="about-main">
     <div class="container">
-        
-        <!-- Grid 2 Colunas (Imagem + Texto) -->
         <div class="about-grid">
-            <!-- Coluna 1: Imagem Menor/Detalhe -->
             <div class="about-image">
-                <img src="https://picsum.photos/500/600?random=10" alt="Detalhe laboratório">
+                <img src="/assets/img/logoreservatorio.png" alt="Observatório Logo">
             </div>
 
-            <!-- Coluna 2: Texto Institucional -->
-            <div class="about-content about-text-content">
-                <h2 class="about-title">O que fazemos</h2>
-                <p class="about-text">
-                    A Fiocruz é uma instituição de pesquisa biomédica de <span class="orange-highlight">importância estratégica</span> para o Brasil. 
-                    Atuamos como centro de referência em vigilância em saúde, desenvolvimento tecnológico e inovação 
-                    para o Sistema Único de Saúde (SUS), com foco em doenças infecciosas e crônicas que afetam a população.
-                </p>
-                <div class="giant-quote">
-                    Nossa equipe multidisciplinar trabalha na interface entre pesquisa básica e aplicada, gerando 
-                    conhecimento que se traduz em políticas públicas, produtos e serviços de saúde. Colaboramos 
-                    com instituições nacionais e internacionais para fortalecer a resposta do Brasil aos desafios 
-                    epidemiológicos contemporâneos.
+            <div>
+                <!-- Bloco 1 -->
+                <div class="about-content about-text-content">
+                    <h2 class="about-title">
+                        quem somos?
+                        <span class="block-badge">1</span>
+                    </h2>
+                    <p class="about-text">
+                        Somos um centro de estudos e <strong>Think Tank em Estratégia, Cultura, Tecnologia & Futuros</strong>. Construímos conhecimento acadêmico que conecta a universidade com as organizações e a sociedade.
+                    </p>
+                    <span class="social-handle">@observatoriodaestrategia</span>
                 </div>
-                <p class="about-text">
-                    Comprometemos com a excelência científica, a responsabilidade social e a democratização do 
-                    conhecimento, contribuindo para melhorar a qualidade de vida e a segurança sanitária da população brasileira 
-                    e global.
-                </p>
+                
+                <!-- Bloco 2 -->
+                <div class="about-content about-text-content">
+                    <h2 class="about-title">
+                        nossa missão
+                        <span class="block-badge">2</span>
+                    </h2>
+                    <p class="about-text">
+                        Nossa missão é fortalecer a criação, desenvolvimento e longevidade das <strong>organizações brasileiras</strong>, públicas e privadas, de diferentes portes, investigando fenômenos gerenciais e de mercado, nos campos do <strong>empreendedorismo</strong>, <strong>inovação</strong> e <strong>consumo</strong>.
+                    </p>
+                    <span class="social-handle">@observatoriodaestrategia</span>
+                </div>
+                
+                <!-- Bloco 3 -->
+                <div class="about-content about-text-content">
+                    <h2 class="about-title">
+                        nosso grupo
+                        <span class="block-badge">3</span>
+                    </h2>
+                    <p class="about-text">
+                        Somos um grupo de pesquisa cadastrado no CNPq, sediado na UFJF e na FACC, composto por pesquisadores de diferentes unidades acadêmicas desta instituição e de outras universidades.
+                    </p>
+                    <div class="about-logos">
+                        <span>UFJF</span> &middot; <span>FACC/UFJF</span> &middot; <span>CNPq</span>
+                    </div>
+                    <span class="social-handle" style="margin-top: 25px;">@observatoriodaestrategia</span>
+                </div>
             </div>
         </div>
     </div>
@@ -181,10 +221,10 @@
     
 <style>
     .social-bar-container {
-        background-color: #333333;
+        background-color: var(--color-bg-dark);
         color: white;
         padding: 12px 0; /* Reduzido padding para afinar a barra mantendo logo grande */
-        border-top: 4px solid #CB4F08; /* Toque da identidade Fiocruz */
+        border-top: 4px solid var(--color-accent); /* Toque da identidade Fiocruz */
         margin-top: auto; /* Garante que fique no fundo se usar flex no body */
         width: 100%;
     }
@@ -218,7 +258,7 @@
         transition: color 0.3s ease, transform 0.3s ease;
     }
     .social-icon:hover {
-        color: #CB4F08; /* Laranja Fiocruz no hover */
+        color: var(--color-accent); /* Laranja Fiocruz no hover */
         transform: translateY(-3px);
     }
     .footer-logo img {
@@ -235,16 +275,16 @@
         <div class="social-links">
             <span class="social-text">Siga-nos</span>
             <!-- Icons -->
-            <a href="https://www.facebook.com/oficialfiocruz/?locale=pt_BR" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/oficialfiocruz/?hl=pt-br" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/fiocruz" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/company/oficialfiocruz/posts/?feedView=all" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.youtube.com/" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/observatoriodaestrategia/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
 
         <!-- Direita: Logo Institucional -->
         <div class="footer-logo">
-            <img src="/assets/img/marcafiocruz_vertical_NEGATIVA_24052024.png" alt="Fiocruz Pesquisa">
+            <img src="/assets/img/logoreservatorio.png" alt="Observatório da Estratégia">
         </div>
     </div>
 </div>
