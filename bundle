@@ -1,0 +1,9 @@
+Configuration file: C:/Documentos/Trabalhos I.A/WebSiteObservatório/Website_Fiocruz_Pesquisadores/_config.yml
+            Source: C:/Documentos/Trabalhos I.A/WebSiteObservatório/Website_Fiocruz_Pesquisadores
+       Destination: C:/Documentos/Trabalhos I.A/WebSiteObservatório/Website_Fiocruz_Pesquisadores/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 0.202 seconds.
+ Auto-regeneration: enabled for 'C:/Documentos/Trabalhos I.A/WebSiteObservatório/Website_Fiocruz_Pesquisadores'
+    Server address: http://127.0.0.1:4000/observatorio-estrategia-site/
+  Server running... press ctrl-c to stop.

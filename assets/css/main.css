@@ -281,7 +281,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 100px;
 }
 
 .nav-links {
@@ -291,20 +291,19 @@ ul {
 }
 
 .logo img {
-  height: 90px; /* Increased from 80px */
-  margin-top: 10px; /* Adjusted from 6px */
+  height: 70px;
+  margin-top: 5px;
 }
 
 .nav-links a {
-  font-family: "Barlow Condensed", sans-serif; /* Updated to Montserrat */
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffffff !important; /* FORCED WHITE for homepage/transparent navbar */
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff !important;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 0.9rem;
-  text-decoration: none; /* Ensure no default underline */
-  position: relative; /* Required for the ::after effect */
+  text-decoration: none;
+  position: relative;
 }
 
 .nav-links a:hover {

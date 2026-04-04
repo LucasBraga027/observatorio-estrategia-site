@@ -2,5 +2,26 @@
   is_logo: true
   category: "BEM-VINDO"
   description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
-  image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+  image: "/images/imagem1.png"
+  url: "/sobre.html"
+
+- title: ""
+  is_logo: true
+  category: "BEM-VINDO"
+  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
+  image: "/images/imagem2.webp"
+  url: "/sobre.html"
+
+- title: ""
+  is_logo: true
+  category: "BEM-VINDO"
+  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
+  image: "/images/imagem3.webp"
+  url: "/sobre.html"
+
+- title: ""
+  is_logo: true
+  category: "BEM-VINDO"
+  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
+  image: "/images/imagem4.png"
   url: "/sobre.html"
