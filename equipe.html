@@ -81,7 +81,24 @@ navbar_class: navbar-light navbar-static
         font-weight: 700;
         margin-bottom: 30px;
         padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .team-section-description {
+        margin-bottom: 30px;
+        font-family: 'Inter', sans-serif;
+        color: #cbd5e1;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        font-weight: 300;
+        max-width: 1000px;
+    }
+
+    .team-section-description b {
+        color: #ffffff;
+        font-weight: 700;
+        display: inline-block;
+        margin-right: 4px;
     }
 
     /* Grid System */
@@ -133,7 +150,7 @@ navbar_class: navbar-light navbar-static
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
-        color: #333;
+        color: #ffffff;
         margin-bottom: 5px;
     }
 
@@ -150,7 +167,7 @@ navbar_class: navbar-light navbar-static
     .member-aff {
         font-family: 'Inter', sans-serif;
         font-size: 12px; /* Requested 12px */
-        color: #777; /* Light Gray */
+        color: #cbd5e1; /* Replaced light gray for readability */
     }
     
 </style>
@@ -170,6 +187,11 @@ navbar_class: navbar-light navbar-static
     {% for category in site.data.team %}
     <section class="team-section">
         <h2 class="team-section-title">{{ category.category }}</h2>
+        {% if category.description %}
+        <div class="team-section-description">
+            {{ category.description }}
+        </div>
+        {% endif %}
         <div class="team-grid">
             {% for member in category.members %}
             <div class="member-card">
