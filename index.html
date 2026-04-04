@@ -31,7 +31,7 @@ title: Insight - Pesquisa Colaborativa em Saúde
             <span class="slide-category">{{ slide_tag }}</span>
             {% if destaque.is_logo %}
                 <h1 class="slide-title" style="margin-top: 10px; margin-bottom: 25px;">
-                    <img src="{{ site.baseurl }}/images/[SÍMBOLO COLORIDO] Logo Observatório da Estratégia.png" alt="Logo Observatório da Estratégia" style="width: auto; max-width: 80%; max-height: 150px; height: 20vh; object-fit: contain; filter: drop-shadow(0px 10px 25px rgba(0,0,0,0.6)); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;" class="hero-slider-logo" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'; this.style.filter='drop-shadow(0px 15px 35px rgba(0,0,0,0.8))';" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.filter='drop-shadow(0px 10px 25px rgba(0,0,0,0.6))';">
+                    <img src="{{ site.baseurl }}/images/logo-simbolo-colorido.png" alt="Logo Observatório da Estratégia" style="width: auto; max-width: 80%; max-height: 150px; height: 20vh; object-fit: contain; filter: drop-shadow(0px 10px 25px rgba(0,0,0,0.6)); transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;" class="hero-slider-logo" onmouseover="this.style.transform='scale(1.03) translateY(-5px)'; this.style.filter='drop-shadow(0px 15px 35px rgba(0,0,0,0.8))';" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.filter='drop-shadow(0px 10px 25px rgba(0,0,0,0.6))';">
                 </h1>
             {% else %}
                 <h1 class="slide-title">{{ slide_title }}</h1>
@@ -64,28 +64,184 @@ title: Insight - Pesquisa Colaborativa em Saúde
     </div>
 </section>
 
-<div id="insight-section" class="manifesto-section">
-  <div class="container" style="text-align: center">
-    <h2 class="manifesto-title" style="margin-top: -100px; margin-bottom: -150px;">
-      <img src="{{ site.baseurl }}/assets/img/logoinsight.png" alt="Insight Logo" class="insight-logo-image" style="width: 450px; max-width: 90%; height: auto; object-fit: contain; display: inline-block; pointer-events: none; user-select: none; position: relative;">
-    </h2>
-    <style>
-      .insight-logo-image {
-        filter: invert(0.75); /* Cinza (inverte apenas 75% do branco) */
-        transition: filter 0.3s ease;
+<style>
+  .about-section {
+      padding: 80px 20px;
+      background-color: transparent; /* Adaptável ao tema */
+      color: var(--text-main);
+  }
+  .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+  }
+  .about-text {
+      text-align: left;
+  }
+  .about-text h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+  }
+  .about-text .highlight {
+      color: #CB4F08; /* Laranja da marca */
+  }
+  .about-lead {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--text-desc);
+      line-height: 1.6;
+      margin-bottom: 25px;
+      border-left: 4px solid #CB4F08;
+      padding-left: 15px;
+  }
+  .about-desc {
+      font-size: 1.05rem;
+      color: var(--text-desc);
+      line-height: 1.8;
+  }
+  
+  /* Cards de Pilares */
+  .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+  .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .pillar-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: #CB4F08;
+  }
+  .pillar-icon {
+      background: rgba(203, 79, 8, 0.15);
+      color: #CB4F08;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+  }
+  .pillar-content h3 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--text-main);
+  }
+  .pillar-content p {
+      font-size: 0.95rem;
+      color: var(--text-desc);
+      margin: 0;
+      line-height: 1.5;
+  }
+
+  /* Responsividade */
+  @media (max-width: 992px) {
+      .about-container { grid-template-columns: 1fr; gap: 40px; }
+      .about-text h2 { font-size: 2.5rem; }
+  }
+  @media (max-width: 768px) {
+      .about-section { padding: 40px 15px; }
+      .about-text h2 { 
+          font-size: 2.2rem; 
+          line-height: 1.2; 
+          word-break: normal; 
+          hyphens: none; 
       }
-      body.dark-mode .insight-logo-image {
-        filter: none; /* Mantém a cor original (branco) no modo escuro */
+      .about-text h2 .highlight {
+          display: block;
+          margin-top: 10px;
       }
-    </style>
-    <p class="manifesto-lead">
-      <span class="orange-highlight">Grupo de Pesquisa</span> e Think Tank em Estratégia, Cultura, Tecnologia e <span class="orange-highlight">Futuros</span> | Universidade Federal de Juiz de Fora
-    </p>
-    <div class="manifesto-divider"></div>
-    <p class="manifesto-sub">
-      Acompanhando a fronteira tecnológica e seus impactos organizacionais e culturais para o desenvolvimento de amanhã.
-    </p>
+      .about-lead { font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px; padding-left: 10px; }
+      .about-desc { font-size: 1rem; }
+  }
+</style>
+
+<section id="insight-section" class="about-section">
+  <div class="about-container">
+      <div class="about-text" style="align-self: flex-start;">
+          <h2>Bem-vindo ao <span class="highlight">Observatório</span></h2>
+          <p class="about-lead"><span class="orange-highlight">Grupo de Pesquisa</span> e Think Tank em Estratégia, Cultura, Tecnologia e <span class="orange-highlight">Futuros</span> | Universidade Federal de Juiz de Fora</p>
+          <p class="about-desc">Acompanhando a fronteira tecnológica e seus impactos organizacionais e culturais para o desenvolvimento de amanhã.</p>
+          <div class="about-extra">
+            <p>Somos um centro de estudos em Estratégia, Empreendedorismo e Inovação, como foco em Mercados, Cultura, Tecnologia & Futuros, comprometido com a construção de conhecimento acadêmico que conecta a universidade com as organizações e a sociedade.</p>
+            <p>Somos um grupo de pesquisa cadastrado no CNPQ, sediado na UFJF e na FACC, composto por pesquisadores de diferentes unidades acadêmicas desta instituição e de outras universidades.</p>
+            <p>Produzimos Pesquisas que originam extensão, cursos, relatórios, metodologias e propostas estratégicas para organizações públicas e privadas, conectando estratégia, cultura, tecnologia e futuros, através de 7 linhas de pesquisa.</p>
+          </div>
+      </div>
+
+      <div class="about-pillars">
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-brain"></i></div>
+              <div class="pillar-content">
+                  <h3>Imaginação Estratégica, Estudos de Futuros e IA</h3>
+                  <p>Investigação de fenômenos relacionados ao campo da cognição gerencial, como a imaginação estratégica, efeitos da IA no processo individual e coletivo da formulação estratégica e na sociedade como um todo. Também investiga a contribuição dos estudos de futuros para o campo da estratégia, bem como seus impactos em políticas públicas.</p>
+              </div>
+          </div>
+          
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-book-open"></i></div>
+              <div class="pillar-content">
+                  <h3>Ecossistemas Inovadores de Aprendizagem</h3>
+                  <p>Investigação de fenômenos relacionados à aprendizagem de inovação, empreendedorismo e tecnologia, no contexto das organizações, bem como desenvolvimento de metodologias de ensino inovadoras, tanto no contexto formal quanto informal.</p>
+              </div>
+          </div>
+          
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-users"></i></div>
+              <div class="pillar-content">
+                  <h3>Cultura, Consumo e Sociedade</h3>
+                  <p>Visa investigar como práticas culturais de consumo, formas organizacionais e dinâmicas de mercado expressam, produzem e modulam subjetividades, identidades, relações de poder e regimes éticos em sociedades marcadas por neoliberalismo, colonialidade, tecnologias digitais e novos agenciamentos sociomateriais.</p>
+              </div>
+          </div>
+
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="pillar-content">
+                  <h3>Estratégia, geopolítica e internacionalização no sul global</h3>
+                  <p>Investiga como a fragmentação geoeconômica, os acordos comerciais e as dinâmicas de poder entre blocos econômicos e potências globais reconfiguram as estratégias de internacionalização e as condições de inserção competitiva de empresas brasileiras e do Sul Global.</p>
+              </div>
+          </div>
+
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-rocket"></i></div>
+              <div class="pillar-content">
+                  <h3>Inovação Tecnológica e Criação de Novos Mercados</h3>
+                  <p>Análise da inovação tecnológica, modelo de negócios e ecossistemas de inovação, examinando como tecnologias reconfiguram estruturas, atores e dinâmicas de valor, promovendo a evolução, orquestração e transformação de ecossistemas, bem como a emergência de novos mercados.</p>
+              </div>
+          </div>
+
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-leaf"></i></div>
+              <div class="pillar-content">
+                  <h3>Conexões e Sistemas Sustentáveis (Sics)</h3>
+                  <p>Pesquisar e analisar sistemas e conexões sustentáveis, apresentando proposições éticas, sugestões teóricas, práticas e estratégicas que contribuem para a sustentabilidade do planeta.</p>
+              </div>
+          </div>
+
+          <div class="pillar-card">
+              <div class="pillar-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div class="pillar-content">
+                  <h3>Monitoramento e Prospecção Tecnológicos com emprego de ciência de dados e IA</h3>
+                  <p>Desenvolver, implementar e documentar um framework metodológico e computacional de monitoramento tecnológico orientado por ciência de dados e IA, capaz de integrar dados de patentes, publicações científicas, bases de dados diversas, e gerar insumos estruturados para suporte à decisão e formulação de estratégias de inovação em diferentes domínios tecnológicos.</p>
+              </div>
+          </div>
+      </div>
   </div>
-</div>
-
-
+</section>

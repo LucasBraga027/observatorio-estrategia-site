@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre</title>
     <meta name="description" content="Observatório da Estratégia - Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros da Universidade Federal de Juiz de Fora.">
-    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" href="/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="/observatorio-estrategia-site/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/observatorio-estrategia-site/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css">
     
     
     <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
@@ -41,17 +41,17 @@
     <nav class="navbar ">
     <div class="container nav-container">
         <div class="logo">
-            <a href="/">
-                <img src="/assets/img/logoinsight.png" alt="Observatório da Estratégia">
+            <a href="/observatorio-estrategia-site/">
+                <img src="/observatorio-estrategia-site/images/logo-simbolo-colorido.png" alt="Observatório da Estratégia" style="max-height: 50px;">
             </a>
         </div>
         <ul class="nav-links">
-            <li><a href="/projetos.html" class="">Projetos</a></li>
-            <li><a href="/dashboards.html" class="">Dashboards</a></li>
-            <li><a href="/publicacoes.html" class="">Publicações</a></li>
-            <li><a href="/equipe.html" class="">Equipe</a></li>
+            <li><a href="/observatorio-estrategia-site/projetos.html" class="">Projetos</a></li>
+            <li><a href="/observatorio-estrategia-site/dashboards.html" class="">Dashboards</a></li>
+            <li><a href="/observatorio-estrategia-site/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/observatorio-estrategia-site/equipe.html" class="">Equipe</a></li>
             <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
-                <a href="/colabore.html" class="nav-btn">Colabore</a>
+                <a href="/observatorio-estrategia-site/colabore.html" class="nav-btn">Colabore</a>
                 <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
                 <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
                 
@@ -155,9 +155,18 @@
 
 <!-- Bloco 4: Apresentação Geral (Hero) -->
 <section class="page-hero" style="display:flex; align-items:center; justify-content:center; text-align:center;">
-    <img src="/assets/img/ufjf-foto-reproducao.jpg" class="hero-bg" alt="Banner Sobre - UFJF" fetchpriority="high">
+    <img src="/observatorio-estrategia-site/assets/img/ufjf-foto-reproducao.jpg" class="hero-bg" alt="Banner Sobre - UFJF" fetchpriority="high">
     <div style="position:relative; z-index:2; padding: 0 20px;">
-        <h1 class="hero-title" style="margin-bottom:5px;">Observatório da Estratégia</h1>
+        <!-- Logo Responsiva com Estilo Sofisticado -->
+        <h1 class="hero-title" style="margin-bottom:15px; display: flex; justify-content: center;">
+            <img src="/observatorio-estrategia-site/images/[SÍMBOLO COLORIDO] Logo Observatório da Estratégia.png" alt="Logo Observatório da Estratégia" style="width: auto; max-width: 80%; max-height: 120px; height: 15vh; object-fit: contain; display: inline-block; filter: drop-shadow(0px 4px 15px rgba(0,0,0,0.5)); transition: transform 0.4s ease, filter 0.4s ease;" class="hero-logo-img">
+        </h1>
+        <style>
+            .hero-logo-img:hover {
+                transform: scale(1.05); /* Leve efeito de zoom para interação elegante */
+                filter: drop-shadow(0px 8px 25px rgba(0,0,0,0.7)); /* Realça o brilho ao passar o mouse */
+            }
+        </style>
         <h2 class="hero-subtitle" style="margin-bottom:20px;">Estratégia, Cultura, Tecnologia & Futuros</h2>
         <p class="hero-subtitle" style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
             Conhecimento acadêmico que contribui para a <span class="orange-highlight">melhoria do ambiente de gestão de organizações</span> públicas e privadas.
@@ -169,7 +178,7 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-image">
-                <img src="/assets/img/simbolo-colorido-logo.png" alt="Símbolo Colorido - Logo Observatório da Estratégia">
+                <img src="/observatorio-estrategia-site/assets/img/simbolo-colorido-logo.png" alt="Símbolo Colorido - Logo Observatório da Estratégia">
             </div>
 
             <div>
@@ -284,14 +293,14 @@
 
         <!-- Direita: Logo Institucional -->
         <div class="footer-logo">
-            <img src="/assets/img/simbolo-colorido-logo.png" alt="Símbolo Colorido - Observatório da Estratégia">
+            <img src="/observatorio-estrategia-site/assets/img/simbolo-colorido-logo.png" alt="Símbolo Colorido - Observatório da Estratégia">
         </div>
     </div>
 </div>
 
     
 
-    <script src="/assets/js/main.js"></script>
+    <script src="/observatorio-estrategia-site/assets/js/main.js"></script>
     <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {
