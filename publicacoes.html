@@ -373,8 +373,8 @@ navbar_class: navbar-light navbar-static
         <div class="pub-filters">
             <button class="filter-btn active" data-filter="all">Todos</button>
             <button class="filter-btn" data-filter="artigos">Artigos</button>
-            <button class="filter-btn" data-filter="preprints">Preprints</button>
             <button class="filter-btn" data-filter="relatorios">Relatórios</button>
+            <a href="https://substack.com/@observatorioestrategia?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAQ-eVFleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafM8dKTM6WGediO3tpripuxOzh3daNRPXLNgXlb3wUgT_ZHKRlb-nDJcckvYA_aem_Vg_IpXY06sgBhy3CVvtCxA" target="_blank" class="filter-btn" style="text-decoration: none; display: inline-flex; align-items: center;">Substack <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; margin-left: 6px;"></i></a>
         </div>
 
         <!-- List -->
@@ -454,6 +454,7 @@ navbar_class: navbar-light navbar-static
 
         // Filter Button Logic
         filterBtns.forEach(btn => {
+            if (btn.tagName === 'A') return; // ignore links
             btn.addEventListener('click', () => {
                 // Update Active State
                 filterBtns.forEach(b => b.classList.remove('active'));
