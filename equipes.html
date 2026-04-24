@@ -44,7 +44,7 @@ navbar_class: navbar-light navbar-static
     .team-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0px 20px 80px 20px; /* Reduced top padding to move cards up */
+        padding: 0px 20px 80px 20px;
     }
 
     /* Page Title */
@@ -59,7 +59,7 @@ navbar_class: navbar-light navbar-static
 
     .section-subtitle {
         text-align: center;
-        color: var(--color-text-muted);
+        color: var(--text-desc);
         font-family: "Inter", sans-serif;
         font-size: 1.1rem;
         margin-bottom: 80px;
@@ -77,17 +77,17 @@ navbar_class: navbar-light navbar-static
     .team-section-title {
         color: #C65000;
         font-family: 'Montserrat', sans-serif;
-        font-size: 28px; /* Requested 28px */
+        font-size: 28px;
         font-weight: 700;
         margin-bottom: 30px;
         padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--border-color);
     }
 
     .team-section-description {
         margin-bottom: 30px;
         font-family: 'Inter', sans-serif;
-        color: #cbd5e1;
+        color: var(--text-desc);
         line-height: 1.8;
         font-size: 1.1rem;
         font-weight: 300;
@@ -95,7 +95,7 @@ navbar_class: navbar-light navbar-static
     }
 
     .team-section-description b {
-        color: #ffffff;
+        color: var(--text-title);
         font-weight: 700;
         display: inline-block;
         margin-right: 4px;
@@ -105,15 +105,12 @@ navbar_class: navbar-light navbar-static
     .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 40px; /* Requested gap */
+        gap: 40px;
     }
 
     /* Member Card Design */
     .member-card {
-        background: transparent; /* Clean look */
-        /* border-bottom: 3px solid #C65000; removed per new 'Delphi' style request preferring cleaner look? 
-            Wait, prompt said: "Design do Card... Sombra suave no container... hover... " 
-            The prompt describes a cleaner card with shadow interaction. */
+        background: transparent;
         border-radius: 8px;
         padding: 20px;
         transition: all 0.3s ease;
@@ -125,9 +122,8 @@ navbar_class: navbar-light navbar-static
 
     .member-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Strong shadow on hover */
-        background-color: var(--color-bg-dark); /* Ensure bg matches dark on hover */
-        border: 1px solid var(--color-accent);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        background-color: var(--bg-card);
     }
 
     /* Photo Styles */
@@ -135,14 +131,13 @@ navbar_class: navbar-light navbar-static
         width: 100%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        border-radius: 8px; /* Requested 8px rounded corners */
+        border-radius: 8px;
         margin-bottom: 15px;
-        /* filter: grayscale(100%); REMOVED - Color by default */
-        transition: filter 0.4s ease; /* Requested 0.4s transition */
+        transition: filter 0.4s ease;
     }
 
     .member-card:hover .member-photo {
-        filter: grayscale(0%); /* Color on hover */
+        filter: grayscale(0%);
     }
 
     /* Typography */
@@ -150,14 +145,14 @@ navbar_class: navbar-light navbar-static
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
-        color: #ffffff;
+        color: var(--text-title);
         margin-bottom: 5px;
     }
 
     .member-role {
         font-family: 'Inter', sans-serif;
-        font-size: 14px; /* Requested 14px */
-        color: var(--color-accent); /* Orange */
+        font-size: 14px;
+        color: var(--color-accent);
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -166,17 +161,16 @@ navbar_class: navbar-light navbar-static
 
     .member-aff {
         font-family: 'Inter', sans-serif;
-        font-size: 12px; /* Requested 12px */
-        color: #cbd5e1; /* Replaced light gray for readability */
+        font-size: 12px;
+        color: var(--text-desc);
     }
-    
 </style>
 
 <!-- Header Standard -->
 <section class="page-header-standard">
     <div class="container">
-        <h1>Nossas Equipes</h1>
-        <p class="subtitle">Conheça os <span class="orange-highlight">pesquisadores e especialistas</span> por trás de nossas inovações.</p>
+        <h1>Nossa Equipe</h1>
+        <p class="subtitle">Conheça os pesquisadores que atuam em nossos projetos.</p>
     </div>
 </section>
 

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css">
+    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css?v=1777036721">
     
     
     <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
@@ -31,10 +31,11 @@
 </head>
 <body>
     <script>
-        // Observatório da Estratégia uses a fixed dark theme.
         (function() {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+            
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            
         })();
     </script>
 
@@ -261,7 +262,7 @@ body.dark-mode .open-science-section p {
 <!-- Hero Section -->
 <div class="hero-collab">
     <div class="container">
-        <h1>Construa o <span class="orange-highlight">Futuro da Saúde</span> Conosco</h1>
+        <h1>Construa o Futuro da Saúde Conosco</h1>
         <p class="lead" style="font-size: 1.25rem; opacity: 0.9;">Unindo ciência, tecnologia e sociedade.</p>
     </div>
 </div>

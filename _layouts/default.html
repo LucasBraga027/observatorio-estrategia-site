@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css?v={{ site.time | date: '%s' }}">
     {% if page.url == "/" %}
     <link rel="preload" as="image" href="{{ site.baseurl }}/assets/img/castelo-fiocruz.jpg" fetchpriority="high">
     {% endif %}
@@ -33,10 +33,15 @@
 </head>
 <body>
     <script>
-        // Observatório da Estratégia uses a fixed dark theme.
         (function() {
+            {% if page.url == "/" %}
+            // Observatório da Estratégia uses a fixed dark theme for the homepage.
             document.body.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
+            {% else %}
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            {% endif %}
         })();
     </script>
 

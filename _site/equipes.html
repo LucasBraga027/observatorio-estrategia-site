@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css">
+    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css?v=1777036721">
     
     
     <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
@@ -31,10 +31,11 @@
 </head>
 <body>
     <script>
-        // Observatório da Estratégia uses a fixed dark theme.
         (function() {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+            
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            
         })();
     </script>
 
@@ -100,7 +101,7 @@
     .team-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0px 20px 80px 20px; /* Reduced top padding to move cards up */
+        padding: 0px 20px 80px 20px;
     }
 
     /* Page Title */
@@ -115,7 +116,7 @@
 
     .section-subtitle {
         text-align: center;
-        color: var(--color-text-muted);
+        color: var(--text-desc);
         font-family: "Inter", sans-serif;
         font-size: 1.1rem;
         margin-bottom: 80px;
@@ -133,17 +134,17 @@
     .team-section-title {
         color: #C65000;
         font-family: 'Montserrat', sans-serif;
-        font-size: 28px; /* Requested 28px */
+        font-size: 28px;
         font-weight: 700;
         margin-bottom: 30px;
         padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--border-color);
     }
 
     .team-section-description {
         margin-bottom: 30px;
         font-family: 'Inter', sans-serif;
-        color: #cbd5e1;
+        color: var(--text-desc);
         line-height: 1.8;
         font-size: 1.1rem;
         font-weight: 300;
@@ -151,7 +152,7 @@
     }
 
     .team-section-description b {
-        color: #ffffff;
+        color: var(--text-title);
         font-weight: 700;
         display: inline-block;
         margin-right: 4px;
@@ -161,15 +162,12 @@
     .team-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 40px; /* Requested gap */
+        gap: 40px;
     }
 
     /* Member Card Design */
     .member-card {
-        background: transparent; /* Clean look */
-        /* border-bottom: 3px solid #C65000; removed per new 'Delphi' style request preferring cleaner look? 
-            Wait, prompt said: "Design do Card... Sombra suave no container... hover... " 
-            The prompt describes a cleaner card with shadow interaction. */
+        background: transparent;
         border-radius: 8px;
         padding: 20px;
         transition: all 0.3s ease;
@@ -181,9 +179,8 @@
 
     .member-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5); /* Strong shadow on hover */
-        background-color: var(--color-bg-dark); /* Ensure bg matches dark on hover */
-        border: 1px solid var(--color-accent);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        background-color: var(--bg-card);
     }
 
     /* Photo Styles */
@@ -191,14 +188,13 @@
         width: 100%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
-        border-radius: 8px; /* Requested 8px rounded corners */
+        border-radius: 8px;
         margin-bottom: 15px;
-        /* filter: grayscale(100%); REMOVED - Color by default */
-        transition: filter 0.4s ease; /* Requested 0.4s transition */
+        transition: filter 0.4s ease;
     }
 
     .member-card:hover .member-photo {
-        filter: grayscale(0%); /* Color on hover */
+        filter: grayscale(0%);
     }
 
     /* Typography */
@@ -206,14 +202,14 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
-        color: #ffffff;
+        color: var(--text-title);
         margin-bottom: 5px;
     }
 
     .member-role {
         font-family: 'Inter', sans-serif;
-        font-size: 14px; /* Requested 14px */
-        color: var(--color-accent); /* Orange */
+        font-size: 14px;
+        color: var(--color-accent);
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -222,17 +218,16 @@
 
     .member-aff {
         font-family: 'Inter', sans-serif;
-        font-size: 12px; /* Requested 12px */
-        color: #cbd5e1; /* Replaced light gray for readability */
+        font-size: 12px;
+        color: var(--text-desc);
     }
-    
 </style>
 
 <!-- Header Standard -->
 <section class="page-header-standard">
     <div class="container">
-        <h1>Nossas Equipes</h1>
-        <p class="subtitle">Conheça os <span class="orange-highlight">pesquisadores e especialistas</span> por trás de nossas inovações.</p>
+        <h1>Nossa Equipe</h1>
+        <p class="subtitle">Conheça os pesquisadores que atuam em nossos projetos.</p>
     </div>
 </section>
 
@@ -276,7 +271,7 @@
     </section>
     
     <section class="team-section">
-        <h2 class="team-section-title">Coordenadores</h2>
+        <h2 class="team-section-title">Coordenadores de linha</h2>
         
         <div class="team-grid">
             
@@ -286,7 +281,7 @@
                 
                 <h3 class="member-name">Prof. Dr. Thiago Almeida</h3>
                 <p class="member-role">Coordenador</p>
-                <p class="member-aff">Linha da Imaginação Estratégica, Estudos de Futuros e IA</p>
+                <p class="member-aff">Linha Imaginação Estratégica, Estudos de Futuros e IA</p>
                 <div class="card-actions">
                     
                     
@@ -299,7 +294,7 @@
                 
                 <h3 class="member-name">Profa. Dra. Cristina Dusi</h3>
                 <p class="member-role">Coordenadora</p>
-                <p class="member-aff">Linha de Empreendedorismo e Gestão de Empresas Familiares</p>
+                <p class="member-aff">Linha Empreendedorismo e Gestão de Empresas Familiares</p>
                 <div class="card-actions">
                     
                     
@@ -312,7 +307,7 @@
                 
                 <h3 class="member-name">Profa. Dra. Camila Braga</h3>
                 <p class="member-role">Coordenadora</p>
-                <p class="member-aff">Linha de Cultura, Consumo e Sociedade</p>
+                <p class="member-aff">Linha Cultura, Consumo e Sociedade</p>
                 <div class="card-actions">
                     
                     <a href="http://lattes.cnpq.br/6477125105143473" class="social-btn lattes" target="_blank">LATTES</a>
@@ -327,7 +322,7 @@
                 
                 <h3 class="member-name">Profa. Dra. Tatiana Dornelas</h3>
                 <p class="member-role">Coordenadora</p>
-                <p class="member-aff">Linha de Estratégia, geopolítica e internacionalização no sul global</p>
+                <p class="member-aff">Linha Estratégia, geopolítica e internacionalização no sul global</p>
                 <div class="card-actions">
                     
                     

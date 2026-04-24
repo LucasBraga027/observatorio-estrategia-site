@@ -19,15 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const currentTheme = localStorage.getItem('theme');
 
-  // Check LocalStorage or System Preference
-  if (currentTheme) {
-    if (currentTheme === 'dark') {
+  // Check LocalStorage or System Preference (Only on index page)
+  const isHomepage = window.location.pathname === '/' || window.location.pathname === '/observatorio-estrategia-site/' || window.location.pathname.endsWith('index.html');
+  
+  if (isHomepage) {
+    if (currentTheme) {
+      if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        if (themeSwitch) themeSwitch.checked = true;
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       body.classList.add('dark-mode');
       if (themeSwitch) themeSwitch.checked = true;
     }
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    body.classList.add('dark-mode');
-    if (themeSwitch) themeSwitch.checked = true;
+  } else {
+      // Force light mode on all other pages regardless of preferences
+      body.classList.remove('dark-mode');
+      if (themeSwitch) themeSwitch.checked = false;
   }
 
   // Toggle Event Listener

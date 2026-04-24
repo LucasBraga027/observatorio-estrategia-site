@@ -1,22 +1,22 @@
-/* Variáveis CSS Básicas (Refined) */
-/* Variáveis CSS Básicas (Observatório) */
 :root {
-  --bg-body: #0A1628;
-  --bg-card: #080808;
-  --text-title: #FFFFFF;
-  --text-desc: #CCCCCC;
-  --text-primary: #FFFFFF;
+  /* Fiocruz Default Light Theme */
+  --bg-body: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-title: #1E293B;
+  --text-desc: #475569;
+  --text-primary: #334155;
   --navbar-text: #FFFFFF;
-  --card-bg: #080808;
-  --footer-bg: #000000;
-  --border-color: #1A4B8C;
-  --shadow-color: rgba(0, 0, 0, 0.5);
+  --card-bg: #FFFFFF;
+  --footer-bg: #0F172A;
+  --border-color: #E2E8F0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 
+  /* Constants */
   --color-primary: #0A1628;
-  --color-accent: #FF6B00;
+  --color-accent: #C65000;
   --color-bg-dark: #080808;
   --color-text-light: #FFFFFF;
-  --color-text-muted: #CCCCCC;
+  --color-text-muted: #94A3B8;
   --color-logo-blue: #1A4B8C;
 }
 
