@@ -296,7 +296,7 @@ ul {
 }
 
 .nav-links a {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.4rem;
   font-weight: 500;
   color: #ffffff !important;
@@ -360,7 +360,7 @@ ul {
 }
 
 .page-header-standard h1 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 3rem;
   color: var(--color-accent);
@@ -444,7 +444,7 @@ ul {
 }
 
 .hero-title {
-  font-family: "Barlow Condensed", sans-serif; /* Institutional font */
+  font-family: "Montserrat", sans-serif; /* Institutional font */
   font-size: 4rem;
   font-weight: 700; /* Bold for impact */
   font-style: normal; /* No italics */
@@ -456,7 +456,7 @@ ul {
 }
 
 .hero-subtitle {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.5rem;
   font-weight: 700; /* Increased weight for better readability */
   font-style: normal; /* No italics */
@@ -501,7 +501,7 @@ ul {
 }
 
 .section-title {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #2c2c2c;
@@ -571,7 +571,7 @@ ul {
 }
 
 .card-title {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: #2c2c2c;
@@ -620,7 +620,7 @@ ul {
 }
 
 .card-link {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: #2c2c2c;
@@ -722,7 +722,7 @@ ul {
 
 /* Título (Agora dentro do grid, ajustado) */
 .about-title {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #333;
@@ -803,7 +803,7 @@ ul {
 }
 
 .mission-title {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: #2c2c2c;
@@ -873,7 +873,7 @@ ul {
 }
 
 .team-section-title {
-  font-family: "Barlow Condensed", sans-serif; /* Matched project font */
+  font-family: "Montserrat", sans-serif; /* Matched project font */
   font-weight: 700; /* Bold as requested */
   font-size: 2rem; /* ~32px */
   color: #333;
