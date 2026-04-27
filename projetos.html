@@ -125,7 +125,7 @@ navbar_class: navbar-light
 <section class="page-header-standard">
     <div class="container">
         <h1>Nossos Projetos</h1>
-        <p class="subtitle">Conheça as iniciativas que estão transformando a saúde pública através de tecnologia, inovação e pesquisa aplicada.</p>
+        <p class="subtitle">Conheça as iniciativas que estão transformando o ambiente de gestão de organizações públicas e privadas através de tecnologia, inovação e pesquisa aplicada.</p>
     </div>
 </section>
 
@@ -137,7 +137,7 @@ navbar_class: navbar-light
             {% for project in site.data.projects %}
             <div class="project-card">
                 <div class="card-image">
-                    <img src="{{ project.image }}" alt="{{ project.title }}">
+                    <img src="{{ site.baseurl }}{{ project.image }}" alt="{{ project.title }}">
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">{{ project.title }}</h3>

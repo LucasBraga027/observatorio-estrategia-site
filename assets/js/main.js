@@ -117,19 +117,36 @@ function applyTranslation(lang) {
     var langBtn = document.getElementById('lang-toggle-btn');
     
     if (teCombo) {
-        teCombo.value = lang;
-        teCombo.dispatchEvent(new Event('change'));
-        
-        // Atualiza visual do botão
-        if (langBtn) {
-            if (lang === 'en') {
-                langBtn.innerText = 'PT';
-                langBtn.classList.add('active-lang');
-            } else {
-                langBtn.innerText = 'EN';
-                langBtn.classList.remove('active-lang');
+        // Bugfix: O Google Translate às vezes usa '' (vazio) para a língua original em vez de 'pt'
+        let targetValue = lang;
+        if (lang === 'pt') {
+            let hasPtOption = Array.from(teCombo.options).some(opt => opt.value === 'pt');
+            if (!hasPtOption) {
+                targetValue = ''; // Reseta para o original
             }
         }
+        
+        // Força uma mudança de valor real se o combo estiver travado
+        if (teCombo.value === targetValue && targetValue === 'en') {
+            teCombo.value = '';
+            teCombo.dispatchEvent(new Event('change'));
+        }
+
+        setTimeout(() => {
+            teCombo.value = targetValue;
+            teCombo.dispatchEvent(new Event('change'));
+            
+            // Atualiza visual do botão
+            if (langBtn) {
+                if (lang === 'en') {
+                    langBtn.innerText = 'PT';
+                    langBtn.classList.add('active-lang');
+                } else {
+                    langBtn.innerText = 'EN';
+                    langBtn.classList.remove('active-lang');
+                }
+            }
+        }, 50);
     }
 }
 

@@ -1,6 +1,6 @@
 - title: "Efeitos da Inteligência Artificial na Aprendizagem e Estratégias de Políticas Públicas Educacionais"
   description: "Este projeto investiga os efeitos do uso intensivo de ferramentas de IA generativa por parte de estudantes e professores do ensino superior e do ensino médio de instituições públicas brasileiras, através da mensuração de três construtos: nível de dependência de IA, descarregamento cognitivo e pensamento crítico."
-  image: ""
+  image: "/images/Imagem2Carrossel.png"
   tags:
     - "INTELIGÊNCIA ARTIFICIAL"
     - "EDUCAÇÃO"
@@ -9,7 +9,7 @@
 
 - title: "O Impacto Disruptivo das Deeptechs nos Ecossistemas de Inovação: Estratégias, Modelos de Negócios, Políticas Públicas e Criação de Novos Mercados"
   description: "Este projeto, com foco no universo das Deeptechs, analisa inovação tecnológica, modelo de negócios e ecossistemas de inovação, , bem como a emergência de novos mercados."
-  image: ""
+  image: "/images/imagem3.png"
   tags:
     - "DEEPTECHS"
     - "INOVAÇÃO"
@@ -18,7 +18,7 @@
 
 - title: "Imaginação Estratégica"
   description: "Este projeto investiga processos imaginativos de gestores e executivos de organizações públicas e privadas, de diferentes portes, em relação ao uso da imaginação durante o processo de formulação estratégica, tanto em nível individual quanto coletivo."
-  image: ""
+  image: "/images/CardImaginacaoEstrategica.webp"
   tags:
     - "ESTRATÉGIA"
     - "IMAGINAÇÃO"
