@@ -5,7 +5,12 @@
                 <img src="{{ site.baseurl }}/images/logo-simbolo-colorido.png" alt="Observatório da Estratégia" style="max-height: 70px;">
             </a>
         </div>
-        <ul class="nav-links">
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
             <li><a href="{{ site.baseurl }}/projetos.html" class="{% if page.url == '/projetos.html' %}active{% endif %}">Projetos</a></li>
             <li><a href="{{ site.baseurl }}/publicacoes.html" class="{% if page.url == '/publicacoes.html' %}active{% endif %}">Publicações</a></li>
             <li><a href="{{ site.baseurl }}/equipes.html" class="{% if page.url == '/equipes.html' %}active{% endif %}">Equipes</a></li>
