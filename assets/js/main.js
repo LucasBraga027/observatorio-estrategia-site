@@ -1,10 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const navbar = document.querySelector(".navbar");
+  // Mobile Menu Toggle - Refactored for robustness
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
 
+  if (navToggle && navLinks) {
+    function toggleMenu() {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    }
+
+    navToggle.onclick = function(e) {
+      e.stopPropagation();
+      toggleMenu();
+    };
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.onclick = function() {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  const navbar = document.querySelector(".navbar");
   // Check if navbar should be static (always dark/visible) or already light
-  if (navbar.classList.contains("navbar-static") || navbar.classList.contains("navbar-light")) {
+  if (navbar && (navbar.classList.contains("navbar-static") || navbar.classList.contains("navbar-light"))) {
      // Already styled or static, no scroll effect needed usually
-  } else {
+  } else if (navbar) {
       // Only add scroll listener if not static/pre-colored
       window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
@@ -13,33 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
           navbar.classList.remove("scrolled");
         }
       });
-  }
-
-  // Mobile Menu Toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function() {
-      navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
-      }
-    });
   }
   // Dark Mode Logic
   const themeSwitch = document.getElementById('switch');
