@@ -19,9 +19,9 @@ title: Insight - Pesquisa Colaborativa em Saúde
     {% else %}
         {% assign slide_title = destaque.title %}
         {% assign slide_desc = destaque.description %}
-        {% assign slide_url = destaque.url | relative_url %}
+        {% if destaque.url contains 'http' %}{% assign slide_url = destaque.url %}{% else %}{% assign slide_url = destaque.url | relative_url %}{% endif %}
         {% assign slide_tag = destaque.category %}
-        {% assign target_blank = '' %}
+        {% if destaque.url contains 'http' %}{% assign target_blank = 'target="_blank"' %}{% else %}{% assign target_blank = '' %}{% endif %}
     {% endif %}
 
     <div class="slide {% if forloop.first %}active{% endif %}">

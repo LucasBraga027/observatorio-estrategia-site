@@ -5,23 +5,20 @@
   image: "/images/imagem1.webp"
   url: "/sobre.html"
 
-- title: ""
-  is_logo: true
-  category: "BEM-VINDO"
-  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
-  image: "/images/imagem2.webp"
-  url: "/sobre.html"
+- title: "Efeitos da Inteligência Artificial na Aprendizagem e Estratégias de Políticas Públicas Educacionais"
+  category: "PROJETO EM DESTAQUE"
+  description: "Efeitos cognitivos do uso de IA por estudantes e desenho de políticas públicas de proteção à cognição humana."
+  image: "/images/Imagem2Carrossel.png"
+  url: "/projetos/inteligencia-artificial.html"
 
-- title: ""
-  is_logo: true
-  category: "BEM-VINDO"
-  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
-  image: "/images/imagem3.webp"
-  url: "/sobre.html"
+- title: "O Impacto Disruptivo das Deeptechs nos Ecossistemas de Inovação: Estratégias, Modelos de Negócios, Políticas Públicas e Criação de Novos Mercados"
+  category: "PROJETO EM DESTAQUE"
+  description: "Mapeamento do impacto das Deeptechs e elaboração de estratégias para subsidiar futuros projetos"
+  image: "/images/imagem3.png"
+  url: "/projetos/deeptechs.html"
 
-- title: ""
-  is_logo: true
-  category: "BEM-VINDO"
-  description: "Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros | UFJF."
-  image: "/images/imagem4.png"
-  url: "/sobre.html"
+- title: "The experiences of Self-extension, archetypes, and motivations in MMORPG online games: an analysis of brazilian World of Warcraft context"
+  category: "NOVA PUBLICAÇÃO"
+  description: "Leia nosso artigo mais recente publicado na Brazilian Administration Review"
+  image: "/images/Imagem4Carrossel.webp"
+  url: "https://www.scielo.br/j/bar/a/tG4m7BNkNQvKCxY3FhVNCBt/?lang=en"
