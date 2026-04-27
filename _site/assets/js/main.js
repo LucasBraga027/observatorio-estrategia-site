@@ -117,26 +117,21 @@ function applyTranslation(lang) {
     var langBtn = document.getElementById('lang-toggle-btn');
     
     if (teCombo) {
-        // Bugfix: O Google Translate às vezes usa '' (vazio) para a língua original em vez de 'pt'
         let targetValue = lang;
         if (lang === 'pt') {
             let hasPtOption = Array.from(teCombo.options).some(opt => opt.value === 'pt');
-            if (!hasPtOption) {
-                targetValue = ''; // Reseta para o original
-            }
+            targetValue = hasPtOption ? 'pt' : '';
         }
-        
-        // Força uma mudança de valor real se o combo estiver travado
-        if (teCombo.value === targetValue && targetValue === 'en') {
-            teCombo.value = '';
-            teCombo.dispatchEvent(new Event('change'));
-        }
+
+        // SEMPRE reseta para vazio antes de aplicar, para forçar o evento 'change'
+        teCombo.value = '';
+        teCombo.dispatchEvent(new Event('change'));
 
         setTimeout(() => {
             teCombo.value = targetValue;
             teCombo.dispatchEvent(new Event('change'));
             
-            // Atualiza visual do botão
+            // Atualiza visual do botão IMEDIATAMENTE para evitar cliques extras
             if (langBtn) {
                 if (lang === 'en') {
                     langBtn.innerText = 'PT';
@@ -146,20 +141,19 @@ function applyTranslation(lang) {
                     langBtn.classList.remove('active-lang');
                 }
             }
-        }, 50);
+        }, 100);
     }
 }
 
 // Ao clicar no botão Toggle
 window.toggleLanguage = function() {
-    if (currentLang === 'pt') {
-        currentLang = 'en';
-    } else {
-        currentLang = 'pt';
-    }
+    const langBtn = document.getElementById('lang-toggle-btn');
+    // Se o botão diz 'EN', o usuário quer traduzir para Inglês.
+    const nextLang = (langBtn && langBtn.innerText === 'EN') ? 'en' : 'pt';
     
-    localStorage.setItem('siteLang', currentLang);
-    applyTranslation(currentLang);
+    currentLang = nextLang;
+    localStorage.setItem('siteLang', nextLang);
+    applyTranslation(nextLang);
 };
 
 // Ao carregar a página, se o usuário tinha salvo 'en', tenta aplicar assim que o Google carregar
