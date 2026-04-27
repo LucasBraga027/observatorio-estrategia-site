@@ -327,7 +327,9 @@ ul {
     gap: 20px !important;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 9999; /* Garante que fique acima de TUDO */
+    visibility: visible !important;
+    display: flex !important;
   }
 
   .nav-links.open {
@@ -340,9 +342,11 @@ ul {
   }
 
   .nav-links li a {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     display: block;
-    padding: 10px 0;
+    padding: 12px 0;
+    color: #ffffff !important; /* Força o branco no mobile */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-utils-group {
