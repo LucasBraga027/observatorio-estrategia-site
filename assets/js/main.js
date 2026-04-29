@@ -143,67 +143,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === Lógica do Botão de Idioma (Toggle) com Memória ===
-let currentLang = localStorage.getItem('siteLang') || 'pt';
-
-// Função para aplicar a tradução real na página
-function applyTranslation(lang) {
-    var teCombo = document.querySelector('.goog-te-combo');
-    var langBtn = document.getElementById('lang-toggle-btn');
-    
-    if (teCombo) {
-        let targetValue = lang;
-        if (lang === 'pt') {
-            let hasPtOption = Array.from(teCombo.options).some(opt => opt.value === 'pt');
-            targetValue = hasPtOption ? 'pt' : '';
-        }
-
-        // SEMPRE reseta para vazio antes de aplicar, para forçar o evento 'change'
-        teCombo.value = '';
-        teCombo.dispatchEvent(new Event('change'));
-
-        setTimeout(() => {
-            teCombo.value = targetValue;
-            teCombo.dispatchEvent(new Event('change'));
-            
-            // Atualiza visual do botão IMEDIATAMENTE para evitar cliques extras
-            if (langBtn) {
-                if (lang === 'en') {
-                    langBtn.innerText = 'PT';
-                    langBtn.classList.add('active-lang');
-                } else {
-                    langBtn.innerText = 'EN';
-                    langBtn.classList.remove('active-lang');
-                }
-            }
-        }, 100);
-    }
-}
-
-// Ao clicar no botão Toggle
+// === Lógica do Botão de Idioma (Toggle) Robusta ===
 window.toggleLanguage = function() {
     const langBtn = document.getElementById('lang-toggle-btn');
-    // Se o botão diz 'EN', o usuário quer traduzir para Inglês.
-    const nextLang = (langBtn && langBtn.innerText === 'EN') ? 'en' : 'pt';
+    const teCombo = document.querySelector('.goog-te-combo');
     
-    currentLang = nextLang;
-    localStorage.setItem('siteLang', nextLang);
-    applyTranslation(nextLang);
+    if (!teCombo) return;
+
+    // O botão mostra 'EN' se o site estiver em PT, e 'PT' se estiver em EN.
+    const isCurrentlyEn = (langBtn && langBtn.innerText === 'PT');
+
+    if (isCurrentlyEn) {
+        // Mudar para Português
+        teCombo.value = 'pt';
+        // Se a opção 'pt' não existir diretamente, usamos vazio '' que é o padrão original do Google
+        if (teCombo.value !== 'pt') teCombo.value = '';
+        teCombo.dispatchEvent(new Event('change'));
+        
+        if (langBtn) langBtn.innerText = 'EN';
+        localStorage.setItem('siteLang', 'pt');
+    } else {
+        // Mudar para Inglês
+        teCombo.value = 'en';
+        teCombo.dispatchEvent(new Event('change'));
+        
+        if (langBtn) langBtn.innerText = 'PT';
+        localStorage.setItem('siteLang', 'en');
+    }
 };
 
-// Ao carregar a página, se o usuário tinha salvo 'en', tenta aplicar assim que o Google carregar
+// Ao carregar a página, se o usuário tinha salvo 'en', aplica
 window.addEventListener('load', function() {
-    if (currentLang === 'en') {
-        // O script do Google Tradutor demora alguns milissegundos para renderizar o .goog-te-combo
-        // Um pequeno intervalo garante que o dropdown já existe na tela para acionarmos
+    const savedLang = localStorage.getItem('siteLang') || 'pt';
+    const langBtn = document.getElementById('lang-toggle-btn');
+
+    if (savedLang === 'en') {
         let checkGoogleLoad = setInterval(function() {
-            if (document.querySelector('.goog-te-combo')) {
+            const teCombo = document.querySelector('.goog-te-combo');
+            if (teCombo) {
                 clearInterval(checkGoogleLoad);
-                applyTranslation('en');
+                teCombo.value = 'en';
+                teCombo.dispatchEvent(new Event('change'));
+                if (langBtn) langBtn.innerText = 'PT';
             }
         }, 300);
-        
-        // Para se não carregar em 5 segundos
         setTimeout(() => clearInterval(checkGoogleLoad), 5000);
     }
 });
