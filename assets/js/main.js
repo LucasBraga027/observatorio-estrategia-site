@@ -143,32 +143,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === Lógica do Botão de Idioma (Toggle) Robusta ===
+// === Lógica do Botão de Idioma (Toggle) Ultra-Robusta ===
 window.toggleLanguage = function() {
     const langBtn = document.getElementById('lang-toggle-btn');
     const teCombo = document.querySelector('.goog-te-combo');
     
-    if (!teCombo) return;
+    if (!teCombo) {
+        alert("O tradutor do Google ainda está carregando. Por favor, tente novamente em alguns segundos.");
+        return;
+    }
 
     // O botão mostra 'EN' se o site estiver em PT, e 'PT' se estiver em EN.
     const isCurrentlyEn = (langBtn && langBtn.innerText === 'PT');
 
     if (isCurrentlyEn) {
-        // Mudar para Português
-        teCombo.value = 'pt';
-        // Se a opção 'pt' não existir diretamente, usamos vazio '' que é o padrão original do Google
-        if (teCombo.value !== 'pt') teCombo.value = '';
+        // Mudar para Português (Original)
+        // O primeiro item (index 0) costuma ser o idioma padrão da página
+        teCombo.selectedIndex = 0;
         teCombo.dispatchEvent(new Event('change'));
         
         if (langBtn) langBtn.innerText = 'EN';
         localStorage.setItem('siteLang', 'pt');
     } else {
         // Mudar para Inglês
-        teCombo.value = 'en';
-        teCombo.dispatchEvent(new Event('change'));
+        let enIndex = -1;
         
-        if (langBtn) langBtn.innerText = 'PT';
-        localStorage.setItem('siteLang', 'en');
+        // Procura pelo valor 'en' ou pelo texto contendo 'inglês'/'english'
+        for (let i = 0; i < teCombo.options.length; i++) {
+            let optVal = teCombo.options[i].value.toLowerCase();
+            let optText = teCombo.options[i].text.toLowerCase();
+            
+            if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
+                enIndex = i;
+                break;
+            }
+        }
+
+        if (enIndex !== -1) {
+            teCombo.selectedIndex = enIndex;
+            teCombo.dispatchEvent(new Event('change'));
+            if (langBtn) langBtn.innerText = 'PT';
+            localStorage.setItem('siteLang', 'en');
+        } else {
+            // Caso extremo: tenta setar o valor diretamente
+            teCombo.value = 'en';
+            teCombo.dispatchEvent(new Event('change'));
+            if (langBtn) langBtn.innerText = 'PT';
+            localStorage.setItem('siteLang', 'en');
+        }
     }
 };
 
