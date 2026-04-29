@@ -194,7 +194,21 @@ window.toggleLanguage = function() {
     }
 };
 
-// Ao carregar a página, garante o estado correto
+// Ao carregar a página, garante o estado correto IMEDIATAMENTE
+(function() {
+    const savedLang = localStorage.getItem('siteLang') || 'pt';
+    const langBtn = document.getElementById('lang-toggle-btn');
+    
+    if (langBtn) {
+        if (savedLang === 'en') {
+            langBtn.innerText = 'PT';
+        } else {
+            langBtn.innerText = 'EN';
+        }
+    }
+})();
+
+// Aplica a tradução programática após o Google carregar (se estiver em EN)
 window.addEventListener('load', function() {
     const savedLang = localStorage.getItem('siteLang') || 'pt';
     const langBtn = document.getElementById('lang-toggle-btn');
@@ -223,8 +237,5 @@ window.addEventListener('load', function() {
             }
         }, 300);
         setTimeout(() => clearInterval(checkGoogleLoad), 5000);
-    } else {
-        // Garante que se estiver em PT, o botão mostra EN
-        if (langBtn) langBtn.innerText = 'EN';
     }
 });
