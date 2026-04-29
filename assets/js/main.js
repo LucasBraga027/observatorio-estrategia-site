@@ -143,58 +143,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === Lógica do Botão de Idioma (Toggle) Ultra-Robusta ===
+// === Lógica do Botão de Idioma (Toggle) 100% Infalível ===
 window.toggleLanguage = function() {
     const langBtn = document.getElementById('lang-toggle-btn');
     const teCombo = document.querySelector('.goog-te-combo');
     
-    if (!teCombo) {
-        alert("O tradutor do Google ainda está carregando. Por favor, tente novamente em alguns segundos.");
-        return;
-    }
-
     // O botão mostra 'EN' se o site estiver em PT, e 'PT' se estiver em EN.
     const isCurrentlyEn = (langBtn && langBtn.innerText === 'PT');
 
     if (isCurrentlyEn) {
         // Mudar para Português (Original)
-        // O primeiro item (index 0) costuma ser o idioma padrão da página
-        teCombo.selectedIndex = 0;
-        teCombo.dispatchEvent(new Event('change'));
+        // 1. Limpar os cookies que o Google Translate usa para lembrar do idioma
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.vercel.app";
         
-        if (langBtn) langBtn.innerText = 'EN';
+        // 2. Resetar estados locais
         localStorage.setItem('siteLang', 'pt');
+        if (langBtn) langBtn.innerText = 'EN';
+
+        // 3. Forçar um reload limpo da página para remover a tradução
+        window.location.reload();
     } else {
         // Mudar para Inglês
-        let enIndex = -1;
-        
-        // Procura pelo valor 'en' ou pelo texto contendo 'inglês'/'english'
-        for (let i = 0; i < teCombo.options.length; i++) {
-            let optVal = teCombo.options[i].value.toLowerCase();
-            let optText = teCombo.options[i].text.toLowerCase();
-            
-            if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
-                enIndex = i;
-                break;
-            }
-        }
+        localStorage.setItem('siteLang', 'en');
+        if (langBtn) langBtn.innerText = 'PT';
 
-        if (enIndex !== -1) {
-            teCombo.selectedIndex = enIndex;
-            teCombo.dispatchEvent(new Event('change'));
-            if (langBtn) langBtn.innerText = 'PT';
-            localStorage.setItem('siteLang', 'en');
+        if (teCombo) {
+            // Se o combo do Google já está disponível, traduz imediatamente
+            let enIndex = -1;
+            for (let i = 0; i < teCombo.options.length; i++) {
+                let optVal = teCombo.options[i].value.toLowerCase();
+                let optText = teCombo.options[i].text.toLowerCase();
+                if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
+                    enIndex = i;
+                    break;
+                }
+            }
+            if (enIndex !== -1) {
+                teCombo.selectedIndex = enIndex;
+                teCombo.dispatchEvent(new Event('change'));
+            } else {
+                teCombo.value = 'en';
+                teCombo.dispatchEvent(new Event('change'));
+            }
         } else {
-            // Caso extremo: tenta setar o valor diretamente
-            teCombo.value = 'en';
-            teCombo.dispatchEvent(new Event('change'));
-            if (langBtn) langBtn.innerText = 'PT';
-            localStorage.setItem('siteLang', 'en');
+            // Se o Google não carregou a tempo, o load() abaixo cuidará disso após recarregar
+            window.location.reload();
         }
     }
 };
 
-// Ao carregar a página, se o usuário tinha salvo 'en', aplica
+// Ao carregar a página, garante o estado correto
 window.addEventListener('load', function() {
     const savedLang = localStorage.getItem('siteLang') || 'pt';
     const langBtn = document.getElementById('lang-toggle-btn');
@@ -204,11 +204,27 @@ window.addEventListener('load', function() {
             const teCombo = document.querySelector('.goog-te-combo');
             if (teCombo) {
                 clearInterval(checkGoogleLoad);
-                teCombo.value = 'en';
+                let enIndex = -1;
+                for (let i = 0; i < teCombo.options.length; i++) {
+                    let optVal = teCombo.options[i].value.toLowerCase();
+                    let optText = teCombo.options[i].text.toLowerCase();
+                    if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
+                        enIndex = i;
+                        break;
+                    }
+                }
+                if (enIndex !== -1) {
+                    teCombo.selectedIndex = enIndex;
+                } else {
+                    teCombo.value = 'en';
+                }
                 teCombo.dispatchEvent(new Event('change'));
                 if (langBtn) langBtn.innerText = 'PT';
             }
         }, 300);
         setTimeout(() => clearInterval(checkGoogleLoad), 5000);
+    } else {
+        // Garante que se estiver em PT, o botão mostra EN
+        if (langBtn) langBtn.innerText = 'EN';
     }
 });
