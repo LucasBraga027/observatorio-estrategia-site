@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insight - Pesquisa Colaborativa em Saúde</title>
+    <title>Observatório da Estratégia</title>
     <meta name="description" content="Observatório da Estratégia - Grupo de Pesquisa e Think Tank em Estratégia, Cultura, Tecnologia e Futuros da Universidade Federal de Juiz de Fora.">
-    <link rel="icon" type="image/png" href="/observatorio-estrategia-site/assets/img/logo fiocruz web preto.png" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" href="/observatorio-estrategia-site/assets/img/logo fiocruz web branco.png" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="/images/logo-simbolo-colorido.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/images/logo-simbolo-branco.png" media="(prefers-color-scheme: dark)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;600;700;900&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/observatorio-estrategia-site/assets/css/main.css?v=1777312780">
-    
-    <link rel="preload" as="image" href="/observatorio-estrategia-site/assets/img/castelo-fiocruz.jpg" fetchpriority="high">
-    
+    <link rel="stylesheet" href="/assets/css/main.css?v=1782586222">
     
     <!-- Index specific style for navbar override, keeping it here as it was in index.html -->
     <style>
@@ -45,16 +42,21 @@
     <nav class="navbar ">
     <div class="container nav-container">
         <div class="logo">
-            <a href="/observatorio-estrategia-site/">
-                <img src="/observatorio-estrategia-site/images/logo-simbolo-colorido.png" alt="Observatório da Estratégia" style="max-height: 70px;">
+            <a href="/">
+                <img src="/images/logo-simbolo-colorido.png" alt="Observatório da Estratégia" style="max-height: 70px;">
             </a>
         </div>
-        <ul class="nav-links">
-            <li><a href="/observatorio-estrategia-site/projetos.html" class="">Projetos</a></li>
-            <li><a href="/observatorio-estrategia-site/publicacoes.html" class="">Publicações</a></li>
-            <li><a href="/observatorio-estrategia-site/equipes.html" class="">Equipes</a></li>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/projetos.html" class="">Projetos</a></li>
+            <li><a href="/publicacoes.html" class="">Publicações</a></li>
+            <li><a href="/equipes.html" class="">Equipe</a></li>
             <li class="nav-utils-group" style="display: flex; align-items: center; gap: 15px;">
-                <a href="/observatorio-estrategia-site/colabore.html" class="nav-btn">Colabore</a>
+                <a href="/colabore.html" class="nav-btn">Colabore</a>
                 <div class="nav-actions-group" style="display: flex; align-items: center; gap: 4px;">
                 <button id="lang-toggle-btn" class="circular-btn lang-toggle notranslate" onclick="toggleLanguage()" title="Mudar Idioma">EN</button>
                 
@@ -71,7 +73,7 @@
     
 
     <div class="slide active">
-        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/observatorio-estrategia-site/images/imagem1.webp');"></div>
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/images/imagem1.webp');"></div>
         
         <div class="container slide-content">
             
@@ -79,7 +81,7 @@
                 <!-- Removed h2, replacing below -->
                 <h1 class="slide-title" style="margin-top: 10px; margin-bottom: 25px;">
                     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
-                        <img src="/observatorio-estrategia-site/images/logo-simbolo-colorido.png" alt="Logo Observatório da Estratégia" style="width: auto; max-width: 80%; max-height: 150px; height: 22vh; object-fit: contain; filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.5)); transition: transform 0.5s ease; margin-bottom: 5px;" class="hero-slider-logo" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <img src="/images/logo-simbolo-colorido.png" alt="Logo Observatório da Estratégia" style="width: auto; max-width: 80%; max-height: 150px; height: 22vh; object-fit: contain; filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.5)); transition: transform 0.5s ease; margin-bottom: 5px;" class="hero-slider-logo" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         <h1 style="color: #ffffff; text-align: center; margin: 0; line-height: 1.1; font-family: 'Inter', sans-serif;">
                             <span style="display: block; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -2px;">Observatório</span>
                             <span style="display: block; font-size: clamp(1.8rem, 4.5vw, 3.5rem); font-weight: 300; letter-spacing: -1px; margin-top: -5px;">da Estratégia</span>
@@ -90,7 +92,7 @@
                 </h1>
             
             
-            <a href="/observatorio-estrategia-site/sobre.html"  class="btn-hero">
+            <a href="/sobre.html"  class="btn-hero">
                 Saiba Mais <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -100,7 +102,7 @@
     
 
     <div class="slide ">
-        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/observatorio-estrategia-site/images/Imagem2Carrossel.png');"></div>
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/images/Imagem2Carrossel.png');"></div>
         
         <div class="container slide-content">
             
@@ -112,7 +114,7 @@
             
                 <p class="slide-desc">Efeitos cognitivos do uso de IA por estudantes e desenho de políticas públicas de proteção à cognição humana.</p>
             
-            <a href="/observatorio-estrategia-site/projetos/inteligencia-artificial.html"  class="btn-hero">
+            <a href="/projetos/inteligencia-artificial.html"  class="btn-hero">
                 Saiba Mais <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -122,7 +124,7 @@
     
 
     <div class="slide ">
-        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/observatorio-estrategia-site/images/imagem3.png');"></div>
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/images/imagem3.png');"></div>
         
         <div class="container slide-content">
             
@@ -134,7 +136,7 @@
             
                 <p class="slide-desc">Mapeamento do impacto das Deeptechs e elaboração de estratégias para subsidiar futuros projetos</p>
             
-            <a href="/observatorio-estrategia-site/projetos/deeptechs.html"  class="btn-hero">
+            <a href="/projetos/deeptechs.html"  class="btn-hero">
                 Saiba Mais <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -144,14 +146,14 @@
     
 
     <div class="slide ">
-        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/observatorio-estrategia-site/images/Imagem4Carrossel.webp');"></div>
+        <div class="slide-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,1)), url('/images/Imagem4Carrossel.webp');"></div>
         
         <div class="container slide-content">
             
                 <span class="slide-category">NOVA PUBLICAÇÃO</span>
             
             
-                <h1 class="slide-title">The experiences of Self-extension, archetypes, and motivations in MMORPG online games: an analysis of brazilian World of Warcraft context</h1>
+                <h1 class="slide-title">As experiências de Autoextensão, Arquétipos e Motivações em Jogos Online MMORPG: Uma Análise do Contexto Brasileiro de World of Warcraft</h1>
             
             
                 <p class="slide-desc">Leia nosso artigo mais recente publicado na Brazilian Administration Review</p>
@@ -375,7 +377,7 @@
 
     
 
-    <script src="/observatorio-estrategia-site/assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
     <div id="google_translate_element"></div>
     <script type="text/javascript">
         function googleTranslateElementInit() {

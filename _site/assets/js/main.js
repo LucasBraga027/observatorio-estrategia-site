@@ -1,10 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const navbar = document.querySelector(".navbar");
+  // Mobile Menu Toggle - Refactored for robustness
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
 
+  if (navToggle && navLinks) {
+    function toggleMenu() {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    }
+
+    navToggle.onclick = function(e) {
+      e.stopPropagation();
+      toggleMenu();
+    };
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.onclick = function() {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  const navbar = document.querySelector(".navbar");
   // Check if navbar should be static (always dark/visible) or already light
-  if (navbar.classList.contains("navbar-static") || navbar.classList.contains("navbar-light")) {
+  if (navbar && (navbar.classList.contains("navbar-static") || navbar.classList.contains("navbar-light"))) {
      // Already styled or static, no scroll effect needed usually
-  } else {
+  } else if (navbar) {
       // Only add scroll listener if not static/pre-colored
       window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
@@ -108,67 +143,99 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// === Lógica do Botão de Idioma (Toggle) com Memória ===
-let currentLang = localStorage.getItem('siteLang') || 'pt';
-
-// Função para aplicar a tradução real na página
-function applyTranslation(lang) {
-    var teCombo = document.querySelector('.goog-te-combo');
-    var langBtn = document.getElementById('lang-toggle-btn');
-    
-    if (teCombo) {
-        let targetValue = lang;
-        if (lang === 'pt') {
-            let hasPtOption = Array.from(teCombo.options).some(opt => opt.value === 'pt');
-            targetValue = hasPtOption ? 'pt' : '';
-        }
-
-        // SEMPRE reseta para vazio antes de aplicar, para forçar o evento 'change'
-        teCombo.value = '';
-        teCombo.dispatchEvent(new Event('change'));
-
-        setTimeout(() => {
-            teCombo.value = targetValue;
-            teCombo.dispatchEvent(new Event('change'));
-            
-            // Atualiza visual do botão IMEDIATAMENTE para evitar cliques extras
-            if (langBtn) {
-                if (lang === 'en') {
-                    langBtn.innerText = 'PT';
-                    langBtn.classList.add('active-lang');
-                } else {
-                    langBtn.innerText = 'EN';
-                    langBtn.classList.remove('active-lang');
-                }
-            }
-        }, 100);
-    }
-}
-
-// Ao clicar no botão Toggle
+// === Lógica do Botão de Idioma (Toggle) 100% Infalível ===
 window.toggleLanguage = function() {
     const langBtn = document.getElementById('lang-toggle-btn');
-    // Se o botão diz 'EN', o usuário quer traduzir para Inglês.
-    const nextLang = (langBtn && langBtn.innerText === 'EN') ? 'en' : 'pt';
+    const teCombo = document.querySelector('.goog-te-combo');
     
-    currentLang = nextLang;
-    localStorage.setItem('siteLang', nextLang);
-    applyTranslation(nextLang);
+    // O botão mostra 'EN' se o site estiver em PT, e 'PT' se estiver em EN.
+    const isCurrentlyEn = (langBtn && langBtn.innerText === 'PT');
+
+    if (isCurrentlyEn) {
+        // Mudar para Português (Original)
+        // 1. Limpar os cookies que o Google Translate usa para lembrar do idioma
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.vercel.app";
+        
+        // 2. Resetar estados locais
+        localStorage.setItem('siteLang', 'pt');
+        if (langBtn) langBtn.innerText = 'EN';
+
+        // 3. Forçar um reload limpo da página para remover a tradução
+        window.location.reload();
+    } else {
+        // Mudar para Inglês
+        localStorage.setItem('siteLang', 'en');
+        if (langBtn) langBtn.innerText = 'PT';
+
+        if (teCombo) {
+            // Se o combo do Google já está disponível, traduz imediatamente
+            let enIndex = -1;
+            for (let i = 0; i < teCombo.options.length; i++) {
+                let optVal = teCombo.options[i].value.toLowerCase();
+                let optText = teCombo.options[i].text.toLowerCase();
+                if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
+                    enIndex = i;
+                    break;
+                }
+            }
+            if (enIndex !== -1) {
+                teCombo.selectedIndex = enIndex;
+                teCombo.dispatchEvent(new Event('change'));
+            } else {
+                teCombo.value = 'en';
+                teCombo.dispatchEvent(new Event('change'));
+            }
+        } else {
+            // Se o Google não carregou a tempo, o load() abaixo cuidará disso após recarregar
+            window.location.reload();
+        }
+    }
 };
 
-// Ao carregar a página, se o usuário tinha salvo 'en', tenta aplicar assim que o Google carregar
+// Ao carregar a página, garante o estado correto IMEDIATAMENTE
+(function() {
+    const savedLang = localStorage.getItem('siteLang') || 'pt';
+    const langBtn = document.getElementById('lang-toggle-btn');
+    
+    if (langBtn) {
+        if (savedLang === 'en') {
+            langBtn.innerText = 'PT';
+        } else {
+            langBtn.innerText = 'EN';
+        }
+    }
+})();
+
+// Aplica a tradução programática após o Google carregar (se estiver em EN)
 window.addEventListener('load', function() {
-    if (currentLang === 'en') {
-        // O script do Google Tradutor demora alguns milissegundos para renderizar o .goog-te-combo
-        // Um pequeno intervalo garante que o dropdown já existe na tela para acionarmos
+    const savedLang = localStorage.getItem('siteLang') || 'pt';
+    const langBtn = document.getElementById('lang-toggle-btn');
+
+    if (savedLang === 'en') {
         let checkGoogleLoad = setInterval(function() {
-            if (document.querySelector('.goog-te-combo')) {
+            const teCombo = document.querySelector('.goog-te-combo');
+            if (teCombo) {
                 clearInterval(checkGoogleLoad);
-                applyTranslation('en');
+                let enIndex = -1;
+                for (let i = 0; i < teCombo.options.length; i++) {
+                    let optVal = teCombo.options[i].value.toLowerCase();
+                    let optText = teCombo.options[i].text.toLowerCase();
+                    if (optVal === 'en' || optText.includes('inglês') || optText.includes('english')) {
+                        enIndex = i;
+                        break;
+                    }
+                }
+                if (enIndex !== -1) {
+                    teCombo.selectedIndex = enIndex;
+                } else {
+                    teCombo.value = 'en';
+                }
+                teCombo.dispatchEvent(new Event('change'));
+                if (langBtn) langBtn.innerText = 'PT';
             }
         }, 300);
-        
-        // Para se não carregar em 5 segundos
         setTimeout(() => clearInterval(checkGoogleLoad), 5000);
     }
 });
